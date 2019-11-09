@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat.animate
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +23,14 @@ class MainActivity : AppCompatActivity() {
 
             menu.visibility = View.VISIBLE
 
-            layout.animate().translationX(400f)
+            layout
+                .animate().translationX(400f)
                 .translationY(0f)
                 .scaleX(0.6f)
                 .scaleY(0.6f)
                 .duration = 1000
+
+            window.statusBarColor = resources.getColor(R.color.backgroundDark)
 
             fab.visibility = View.GONE
             IS_SHORT = true
@@ -34,13 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         img.setOnClickListener {
-            Toast.makeText(MainActivity@ this, "hey", Toast.LENGTH_SHORT).show()
-        }
-
-        if (!IS_SHORT) {
-            layout.setOnClickListener {
-                onBackPressed()
-            }
+            Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -53,11 +51,12 @@ class MainActivity : AppCompatActivity() {
                 .translationY(0f)
                 .scaleX(1f)
                 .scaleY(1f)
-                .duration = 1000
+                .duration = 800
 
             Handler().postDelayed({
                 fab.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
+                window.statusBarColor = resources.getColor(R.color.background)
             }, 800)
 
             IS_SHORT = !IS_SHORT
