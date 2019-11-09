@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 .duration = 1000
 
             window.statusBarColor = resources.getColor(R.color.backgroundDark)
+            container.setBackgroundColor(resources.getColor(R.color.backgroundDark))
 
             fab.visibility = View.GONE
             IS_SHORT = true
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 fab.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
                 window.statusBarColor = resources.getColor(R.color.background)
+                container.setBackgroundColor(resources.getColor(R.color.background))
             }, 800)
 
             IS_SHORT = !IS_SHORT
