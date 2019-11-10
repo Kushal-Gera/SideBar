@@ -8,14 +8,16 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
+    <!--    menu files are here-->
+
     <LinearLayout
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/backgroundDark"
         android:gravity="center"
-        android:orientation="vertical"
         android:visibility="gone"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -25,7 +27,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
@@ -43,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Kushal Gera,"
+                android:text="Kushal Gera"
                 android:textColor="#FFF"
                 android:textSize="22sp" />
 
@@ -67,60 +68,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
-                android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/cost" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:text="Membership Plans"
-                    android:textColor="#FFF"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="5dp"
-                    android:src="@drawable/green_dot"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/perf" />
-
                 <TextView
+                    android:id="@+id/home_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
+                    android:drawableStart="@drawable/home"
+                    android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:text="My Performance"
+                    android:text="Home"
+                    android:drawableTint="@color/gray"
                     android:textColor="#FFF"
                     android:textSize="20sp" />
 
@@ -128,10 +92,41 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/green_dot"/>
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/green_dot"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/membership_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:drawableStart="@drawable/cost"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@color/gray"
+                    android:textColor="@color/gray"
+                    android:text="Memberships"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/green_dot" />
 
             </LinearLayout>
 
@@ -144,29 +139,60 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/exercise" />
-
                 <TextView
+                    android:id="@+id/perform_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
-                    android:text="Exercise Routine"
-                    android:textColor="#FFF"
+                    android:drawableStart="@drawable/perf"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="Performance"
+                    android:drawableTint="@color/gray"
+                    android:textColor="@color/gray"
                     android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/red_dot"/>
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/green_dot"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/exercise_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:drawableStart="@drawable/exercise"
+                    android:drawablePadding="5dp"
+                    android:text="Exercises"
+                    android:drawableTint="@color/gray"
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/red_dot" />
 
             </LinearLayout>
 
@@ -178,30 +204,27 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/diet" />
-
                 <TextView
+                    android:id="@+id/diet_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
+                    android:drawableStart="@drawable/diet"
+                    android:drawablePadding="5dp"
                     android:text="Diet Guide"
-                    android:textColor="#FFF"
+                    android:drawableTint="@color/gray"
+                    android:textColor="@color/gray"
                     android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/green_dot"/>
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/green_dot"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -213,35 +236,31 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/gallery" />
-
                 <TextView
+                    android:id="@+id/gallery_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
+                    android:drawableStart="@drawable/gallery"
+                    android:drawablePadding="5dp"
                     android:text="Gallery"
-                    android:textColor="#FFF"
+                    android:drawableTint="@color/gray"
+                    android:textColor="@color/gray"
                     android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/green_dot"/>
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/green_dot"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
         </LinearLayout>
-
 
     </LinearLayout>
 
@@ -289,8 +308,9 @@
                     android:textSize="22sp" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/settings"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/settings" />
@@ -299,39 +319,11 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/img"
+        <fragment
+            android:id="@+id/fragment"
+            android:name="kushal.application.sidebar.main"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/bg_blue" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/bg_white" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/bg_white" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:src="#363A42" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
