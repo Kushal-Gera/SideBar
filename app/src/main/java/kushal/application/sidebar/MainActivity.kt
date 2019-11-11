@@ -1,6 +1,7 @@
 package kushal.application.sidebar
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var IS_SHORT = false
+    private var ON_HOME = true
 
     val menuItemList by lazy {
         arrayListOf<TextView>(
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             menu.visibility = View.VISIBLE
 
             layout
-                .animate().translationX(400f)
+                .animate().translationX(350f)
                 .translationY(0f)
                 .scaleX(0.6f)
                 .scaleY(0.6f)
@@ -42,18 +44,19 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.backgroundDark)
             container.setBackgroundColor(resources.getColor(R.color.backgroundDark))
 
-            fab.visibility = View.GONE
+            fab.visibility = View.INVISIBLE
             IS_SHORT = true
 
         }
         settings.setOnClickListener {
             startActivity(Intent(this, Settings::class.java))
         }
-
-        // color set up for menu
+        // color set up for menu -> home
         setAllGray()
-        home_tv.compoundDrawableTintList =
-            resources.getColorStateList(R.color.white)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            home_tv.compoundDrawableTintList =
+                resources.getColorStateList(R.color.white)
+        }
         home_tv.setTextColor(resources.getColor(R.color.white))
 
         setUpMenuItems()
@@ -66,28 +69,40 @@ class MainActivity : AppCompatActivity() {
     private fun setUpMenuItems() {
 
         home_tv.setOnClickListener {
-            colorChanges(it)
+            header_text.setText("Sidebar App")
+            colorToWhite(it)
+            onBackPressed()
         }
         membership_tv.setOnClickListener {
-            colorChanges(it)
+            colorToWhite(it)
+            header_text.setText("Membership Plans")
             // further changes specific to membership plans
+            onBackPressed()
         }
         perform_tv.setOnClickListener {
-            colorChanges(it)
+            colorToWhite(it)
+            header_text.setText("My Performance")
+            onBackPressed()
         }
         exercise_tv.setOnClickListener {
-            colorChanges(it)
+            colorToWhite(it)
+            header_text.setText("Exercise Routines")
+            onBackPressed()
         }
         diet_tv.setOnClickListener {
-            colorChanges(it)
+            colorToWhite(it)
+            header_text.setText("Diet Guide")
+            onBackPressed()
         }
         gallery_tv.setOnClickListener {
-            colorChanges(it)
+            colorToWhite(it)
+            header_text.setText("Gallery")
+            onBackPressed()
         }
 
     }
 
-    private fun colorChanges(view: View) {
+    private fun colorToWhite(view: View) {
         setAllGray()
         val it = view as TextView
         it.compoundDrawableTintList =
@@ -105,7 +120,6 @@ class MainActivity : AppCompatActivity() {
 
                 it.setTextColor(resources.getColor(R.color.gray))
             }
-
         }
 
 
@@ -118,18 +132,19 @@ class MainActivity : AppCompatActivity() {
                 .translationY(0f)
                 .scaleX(1f)
                 .scaleY(1f)
-                .duration = 800
+                .duration = 600
 
             Handler().postDelayed({
                 fab.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
                 window.statusBarColor = resources.getColor(R.color.background)
                 container.setBackgroundColor(resources.getColor(R.color.background))
-            }, 800)
+            }, 600)
 
             IS_SHORT = !IS_SHORT
-        } else
+        } else if (ON_HOME)
             super.onBackPressed()
+
     }
 
 }

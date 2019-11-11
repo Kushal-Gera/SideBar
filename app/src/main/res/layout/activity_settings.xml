@@ -16,8 +16,8 @@
         android:paddingBottom="20dp">
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@drawable/img_circle"
             android:padding="15dp"
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="Kushal Gera"
             android:textColor="#FFF"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:gravity="center"
             android:text="25 yrs"
             android:textColor="#FFF"
-            android:textSize="22sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
