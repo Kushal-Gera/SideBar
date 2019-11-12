@@ -1,7 +1,6 @@
 package kushal.application.sidebar
 
 import android.annotation.SuppressLint
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -10,11 +9,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kushal.application.sidebar.Fragments.GalleryFrag
+import kushal.application.sidebar.Fragments.HomeFrag
 
 class MainActivity : AppCompatActivity() {
 
     private var IS_SHORT = false
     private var ON_HOME = true
+
+    val fManager by lazy {
+        supportFragmentManager
+    }
 
     val menuItemList by lazy {
         arrayListOf<TextView>(
@@ -60,9 +65,8 @@ class MainActivity : AppCompatActivity() {
         home_tv.setTextColor(resources.getColor(R.color.white))
 
         setUpMenuItems()
+        fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
-
-//        FragmentManager()
 
     }
 
@@ -71,32 +75,50 @@ class MainActivity : AppCompatActivity() {
         home_tv.setOnClickListener {
             header_text.setText("Sidebar App")
             colorToWhite(it)
+            fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
+            ON_HOME = true
+
             onBackPressed()
         }
         membership_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("Membership Plans")
             // further changes specific to membership plans
+            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            ON_HOME = false
+
             onBackPressed()
         }
         perform_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("My Performance")
+            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            ON_HOME = false
+
             onBackPressed()
         }
         exercise_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("Exercise Routines")
+            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            ON_HOME = false
+
             onBackPressed()
         }
         diet_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("Diet Guide")
+            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            ON_HOME = false
+
             onBackPressed()
         }
         gallery_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("Gallery")
+            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            ON_HOME = false
+
             onBackPressed()
         }
 
@@ -105,8 +127,10 @@ class MainActivity : AppCompatActivity() {
     private fun colorToWhite(view: View) {
         setAllGray()
         val it = view as TextView
-        it.compoundDrawableTintList =
-            resources.getColorStateList(R.color.white)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            it.compoundDrawableTintList =
+                resources.getColorStateList(R.color.white)
+        }
         it.setTextColor(resources.getColor(R.color.white))
 
     }
@@ -142,7 +166,13 @@ class MainActivity : AppCompatActivity() {
             }, 600)
 
             IS_SHORT = !IS_SHORT
-        } else if (ON_HOME)
+
+        } else if (!ON_HOME) {
+            fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
+            header_text.setText("SideBar App")
+            colorToWhite(home_tv)
+            ON_HOME = !ON_HOME
+        } else
             super.onBackPressed()
 
     }
