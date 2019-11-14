@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        fab.setOnClickListener {
+        drawer.setOnClickListener {
 
             menu.visibility = View.VISIBLE
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.backgroundDark)
             container.setBackgroundColor(resources.getColor(R.color.backgroundDark))
 
-            fab.visibility = View.INVISIBLE
+            drawer.visibility = View.INVISIBLE
             IS_SHORT = true
 
         }
@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
                 .duration = 600
 
             Handler().postDelayed({
-                fab.visibility = View.VISIBLE
+                drawer.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
                 window.statusBarColor = resources.getColor(R.color.background)
                 container.setBackgroundColor(resources.getColor(R.color.background))
