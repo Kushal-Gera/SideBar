@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Settings"
-            android:theme="@style/Dark_back"/>
+        <activity android:name=".LoginAct"></activity>
+        <activity
+            android:name=".Settings"
+            android:theme="@style/Dark_back" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

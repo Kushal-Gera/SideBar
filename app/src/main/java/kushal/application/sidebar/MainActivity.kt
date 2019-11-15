@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.sidebar.Fragments.GalleryFrag
 import kushal.application.sidebar.Fragments.HomeFrag
 

@@ -42,11 +42,41 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/bg_white" />
 
+            <TextView
+                android:id="@+id/drop_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:drawableEnd="@drawable/down"
+                android:text="Something"
+                android:textColor="#BBB"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/drop_menu"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Something id ypo  kd d d d dd ddkdk ddk d d dd kddk\nckckcekncekecnekcncenkceen\njn jcjj cenjceenc eejcek  ec  kec  kkcece   ceke k lvmlr mrvmr mrvvl ce ecce ce ce cekec c"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/bg_toolbar" />
