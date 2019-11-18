@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -85,7 +85,7 @@
                     android:drawableStart="@drawable/home"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:text="Home"
+                    android:text="@string/home"
                     android:textColor="#FFF"
                     android:textSize="20sp" />
 
@@ -107,7 +107,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/membership_tv"
@@ -118,9 +119,10 @@
                     android:drawableStart="@drawable/cost"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/gray"
-                    android:text="Memberships"
+                    android:text="@string/memberships"
                     android:textColor="@color/gray"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -159,14 +161,14 @@
                     tools:ignore="UnusedAttribute" />
 
                 <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:contentDescription="@string/description"
-                    android:src="@drawable/green_dot"
-                    android:visibility="gone" />
+                    android:src="@drawable/perf"
+                    android:tint="#FFCA28" />
 
             </LinearLayout>
 
@@ -277,6 +279,41 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/logout"
+                android:drawablePadding="5dp"
+                android:text="@string/logout"
+                android:textColor="#DEDEDE"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/call"
+                android:drawablePadding="5dp"
+                android:text="@string/contact_us"
+                android:textColor="#DEDEDE"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -299,7 +336,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/bg_toolbar">
 

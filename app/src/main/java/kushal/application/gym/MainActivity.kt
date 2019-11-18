@@ -1,12 +1,15 @@
 package kushal.application.gym
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kushal.application.gym.Fragments.*
@@ -20,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
     }
 
-    val menuItemList by lazy {
+    private val menuItemList by lazy {
         arrayListOf<TextView>(
             home_tv, membership_tv,
             perform_tv, exercise_tv,
@@ -35,9 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
         drawer.setOnClickListener {
-
             menu.visibility = View.VISIBLE
-
             layout
                 .animate().translationX(350f)
                 .translationY(0f)
@@ -65,6 +66,22 @@ class MainActivity : AppCompatActivity() {
 
         setUpMenuItems()
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
+
+        contact.setOnClickListener {
+            Toast.makeText(this, " hey", Toast.LENGTH_SHORT).show()
+        }
+        logout.setOnClickListener {
+            val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+            builder.setTitle("Do you really want to Logout ?")
+                .setMessage("You can Login later,\nAll progress will be saved !")
+                .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
+                    //auth.logout()
+                }
+                .setNegativeButton("No"){dialogInterface, i ->
+                    //do nothing
+                }
+            builder.create().show()
+        }
 
 
     }
@@ -168,7 +185,7 @@ class MainActivity : AppCompatActivity() {
 
         } else if (!ON_HOME) {
             fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
-            header_text.setText("SideBar App")
+            header_text.text = "SideBar App"
             colorToWhite(home_tv)
             ON_HOME = !ON_HOME
         } else

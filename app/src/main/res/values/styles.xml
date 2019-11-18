@@ -7,16 +7,21 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="colorControlNormal">#CDCDCD</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+
         <item name="android:statusBarColor">@color/background</item>
     </style>
 
-    <style name="Dark_back" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:statusBarColor">@color/backgroundDark</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#CCC</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/background</item>
     </style>
+
+
 
 </resources>

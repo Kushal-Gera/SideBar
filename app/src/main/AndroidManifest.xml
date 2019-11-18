@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="kushal.application.gym">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,10 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="kushal.application.gym.LoginAct"></activity>
         <activity
-            android:name="kushal.application.gym.Settings"
-            android:theme="@style/Dark_back" />
+            android:name="kushal.application.gym.LoginAct" />
+        <activity android:name="kushal.application.gym.Settings" />
         <activity android:name="kushal.application.gym.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,17 +22,17 @@ class HomeFrag : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_main, container, false)
-        view.desc.animate().translationY(-50f)
+        view.desc.animate().translationY(-30f)
         view.desc.visibility = View.GONE
 
         view.drop_down.setOnClickListener {
             if (IS_DOWN) {
-                view.desc.animate().alpha(1f).translationY(0f).duration = 500
+                view.desc.animate().alpha(1f).translationY(0f).duration = 400
                 view.desc.visibility = View.VISIBLE
                 view.drop_down.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up, 0)
             }
             else {
-                view.desc.animate().translationY(-50f).alpha(0f).duration = 500
+                view.desc.animate().translationY(-30f).alpha(0f).duration = 400
                 view.desc.visibility = View.GONE
                 view.drop_down.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.down, 0)
             }
