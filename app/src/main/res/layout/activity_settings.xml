@@ -25,7 +25,8 @@
                 android:layout_width="35dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/back" />
+                android:src="@drawable/back"
+                android:contentDescription="@string/description" />
 
             <TextView
                 android:layout_width="0dp"
@@ -33,15 +34,17 @@
                 android:layout_gravity="center"
                 android:layout_weight="8"
                 android:gravity="center"
-                android:text="Settings"
+                android:layout_marginStart="-10dp"
+                android:text="@string/settings"
                 android:textColor="#FFF"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:layout_marginEnd="10dp" />
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/description" />
 
         </LinearLayout>
 
@@ -61,7 +64,8 @@
             android:layout_gravity="center"
             android:background="@drawable/img_circle"
             android:padding="15dp"
-            android:src="@drawable/dev" />
+            android:src="@drawable/dev"
+            android:contentDescription="@string/description" />
 
         <TextView
             android:layout_width="match_parent"

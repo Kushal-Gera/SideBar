@@ -11,7 +11,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@color/background" />
+        android:src="@color/background"
+        android:contentDescription="@string/description" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +59,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Phone OTP"
+            android:hint="@string/enter_otp"
             android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>

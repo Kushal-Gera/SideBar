@@ -35,9 +35,9 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/img_circle"
+                android:contentDescription="@string/description"
                 android:padding="15dp"
-                android:src="@drawable/dev"
-                android:contentDescription="@string/description" />
+                android:src="@drawable/dev" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -95,9 +95,9 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/description"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone"
-                    android:contentDescription="@string/description" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -128,8 +128,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/green_dot"
-                    android:contentDescription="@string/description" />
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/green_dot" />
 
             </LinearLayout>
 
@@ -153,9 +153,10 @@
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/gray"
                     android:gravity="center"
-                    android:text="Performance"
+                    android:text="@string/performance"
                     android:textColor="@color/gray"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -163,9 +164,9 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/description"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone"
-                    android:contentDescription="@string/description" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -188,9 +189,10 @@
                     android:drawableStart="@drawable/exercise"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/gray"
-                    android:text="Exercises"
+                    android:text="@string/exercises"
                     android:textColor="@color/gray"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -198,8 +200,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/red_dot"
-                    android:contentDescription="@string/description" />
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/red_dot" />
 
             </LinearLayout>
 
@@ -221,9 +223,10 @@
                     android:drawableStart="@drawable/diet"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/gray"
-                    android:text="Diet Guide"
+                    android:text="@string/diet_guide"
                     android:textColor="@color/gray"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -231,9 +234,9 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/description"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone"
-                    android:contentDescription="@string/description" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -255,9 +258,10 @@
                     android:drawableStart="@drawable/gallery"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/gray"
-                    android:text="Gallery"
+                    android:text="@string/gallery"
                     android:textColor="@color/gray"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -265,9 +269,9 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/description"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone"
-                    android:contentDescription="@string/description" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -306,11 +310,11 @@
 
                 <ImageView
                     android:id="@+id/drawer"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/hamburger"
-                    android:contentDescription="@string/description" />
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/hamburger" />
 
                 <TextView
                     android:id="@+id/header_text"
@@ -329,8 +333,8 @@
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/settings"
-                    android:contentDescription="@string/description" />
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/settings" />
 
             </LinearLayout>
 
