@@ -1,4 +1,4 @@
-package kushal.application.sidebar
+package kushal.application.gym
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

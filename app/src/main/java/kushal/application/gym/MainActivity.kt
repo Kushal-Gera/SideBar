@@ -1,4 +1,4 @@
-package kushal.application.sidebar
+package kushal.application.gym
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,9 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_main.*
-import kushal.application.sidebar.Fragments.GalleryFrag
-import kushal.application.sidebar.Fragments.HomeFrag
+import kushal.application.gym.Fragments.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             colorToWhite(it)
             header_text.setText("Membership Plans")
             // further changes specific to membership plans
-            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            fManager.beginTransaction().replace(R.id.layout, MemberFrag()).commit()
             ON_HOME = false
 
             onBackPressed()
@@ -93,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         perform_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("My Performance")
-            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            fManager.beginTransaction().replace(R.id.layout, PerformFrag()).commit()
             ON_HOME = false
 
             onBackPressed()
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         diet_tv.setOnClickListener {
             colorToWhite(it)
             header_text.setText("Diet Guide")
-            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            fManager.beginTransaction().replace(R.id.layout, DietFrag()).commit()
             ON_HOME = false
 
             onBackPressed()

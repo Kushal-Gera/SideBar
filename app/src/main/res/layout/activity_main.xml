@@ -36,7 +36,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/img_circle"
                 android:padding="15dp"
-                android:src="@drawable/dev" />
+                android:src="@drawable/dev"
+                android:contentDescription="@string/description" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 android:gravity="center"
                 android:text="Kushal Gera"
                 android:textColor="#FFF"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,7 +73,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/home_tv"
@@ -81,7 +84,6 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/home"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="Home"
                     android:textColor="#FFF"
@@ -94,7 +96,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -125,7 +128,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/green_dot" />
+                    android:src="@drawable/green_dot"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -136,7 +140,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/perform_tv"
@@ -159,7 +164,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -170,7 +176,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/exercise_tv"
@@ -191,7 +198,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/red_dot" />
+                    android:src="@drawable/red_dot"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -201,7 +209,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/diet_tv"
@@ -223,7 +232,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -233,7 +243,8 @@
                 android:gravity="start"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/gallery_tv"
@@ -255,7 +266,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:src="@drawable/green_dot"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -297,7 +309,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/hamburger" />
+                    android:src="@drawable/hamburger"
+                    android:contentDescription="@string/description" />
 
                 <TextView
                     android:id="@+id/header_text"
@@ -308,7 +321,7 @@
                     android:gravity="center"
                     android:text="Sidebar App"
                     android:textColor="#FFF"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/settings"
@@ -316,7 +329,8 @@
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/settings" />
+                    android:src="@drawable/settings"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 

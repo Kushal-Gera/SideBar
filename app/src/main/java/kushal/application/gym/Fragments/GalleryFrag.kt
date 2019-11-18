@@ -1,4 +1,4 @@
-package kushal.application.sidebar.Fragments
+package kushal.application.gym.Fragments
 
 
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kushal.application.sidebar.R
+import kushal.application.gym.R
 
 class GalleryFrag : Fragment() {
 

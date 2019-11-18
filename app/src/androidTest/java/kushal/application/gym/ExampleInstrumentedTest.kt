@@ -1,4 +1,4 @@
-package kushal.application.sidebar
+package kushal.application.gym
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("kushal.application.sidebar", appContext.packageName)
+        assertEquals("kushal.application.gym", appContext.packageName)
     }
 }

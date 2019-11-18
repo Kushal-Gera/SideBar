@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="kushal.application.sidebar">
+    package="kushal.application.gym">
 
     <application
         android:allowBackup="true"
@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginAct"></activity>
+        <activity android:name="kushal.application.gym.LoginAct"></activity>
         <activity
-            android:name=".Settings"
+            android:name="kushal.application.gym.Settings"
             android:theme="@style/Dark_back" />
-        <activity android:name=".MainActivity">
+        <activity android:name="kushal.application.gym.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

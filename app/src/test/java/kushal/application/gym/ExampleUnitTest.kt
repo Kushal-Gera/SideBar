@@ -1,4 +1,4 @@
-package kushal.application.sidebar
+package kushal.application.gym
 
 import org.junit.Test
 
