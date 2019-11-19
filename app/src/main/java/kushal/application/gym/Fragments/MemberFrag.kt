@@ -33,12 +33,12 @@ class MemberFrag : Fragment() {
 
         val ref = FirebaseDatabase.getInstance().reference.child("membership")
 
+        val pd = ProgressDialog(context, R.style.ProgressDialog)
+        pd.setMessage("Loading Please Wait !")
+        pd.show()
+
         val options = FirebaseRecyclerOptions.Builder<MemberItems>()
             .setQuery(ref, MemberItems::class.java).build()
-
-        val pd = ProgressDialog(context, R.style.AlertDialogCustom)
-        pd.setMessage("Loading Please Wait!")
-        pd.show()
 
         val adapter = object : FirebaseRecyclerAdapter<MemberItems, Mem_viewHolder>(options) {
 
@@ -103,28 +103,12 @@ class MemberFrag : Fragment() {
 
     private fun setVal() {
 
-        val ref = FirebaseDatabase.getInstance().reference.child("membership")
-        ref.child("1silver").child("name").setValue("Silver")
-        ref.child("1silver").child("title").setValue("This is the basic plan")
-        ref.child("1silver").child("desc").setValue("This plan is monthly based and cost")
-        ref.child("1silver").child("price").setValue(1000)
-        ref.child("1silver").child("duration").setValue("Monthly")
-        ref.child("1silver").child("star").setValue(1)
+        val ref = FirebaseDatabase.getInstance().reference.child("gallery").child("images")
+        ref.push().child("img").setValue("Silver")
+        ref.push().child("img").setValue("Thisjcsjs")
+        ref.push().child("img").setValue("Thisnnss")
+        ref.push().child("img").setValue("hcnsnsn")
 
-        ref.child("2gold").child("name").setValue("Gold")
-        ref.child("2gold").child("title").setValue("This is the cost effective plan")
-        ref.child("2gold").child("desc").setValue("This plan is great for regular gym visitors.")
-        ref.child("2gold").child("price").setValue(2500)
-        ref.child("2gold").child("duration").setValue("Quaterly")
-        ref.child("2gold").child("star").setValue(2)
-
-        ref.child("3platinum").child("name").setValue("Platinum")
-        ref.child("3platinum").child("title").setValue("This is the yearly and most effective plan")
-        ref.child("3platinum").child("desc")
-            .setValue("This plan is the executive plan.\nPlan for the hardworkers")
-        ref.child("3platinum").child("price").setValue(6000)
-        ref.child("3platinum").child("duration").setValue("Yearly")
-        ref.child("3platinum").child("star").setValue(3)
 
     }
 
