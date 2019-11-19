@@ -115,12 +115,9 @@ class LoginAct : AppCompatActivity() {
                 Toast.makeText(this@LoginAct, e.message, Toast.LENGTH_LONG).show()
             }
 
-            override fun onCodeSent(
-                s: String?,
-                forceResendingToken: PhoneAuthProvider.ForceResendingToken?
-            ) {
+            override fun onCodeSent(s: String, forceResendingToken: PhoneAuthProvider.ForceResendingToken) {
                 super.onCodeSent(s, forceResendingToken)
-                VERIFICATION_ID = s ?: ""
+                VERIFICATION_ID = s
             }
 
         }
