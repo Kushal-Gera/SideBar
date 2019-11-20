@@ -61,9 +61,9 @@ class GalleryFrag : Fragment() {
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Gal_viewHolder {
-                val view =
+                val vieww =
                     LayoutInflater.from(context).inflate(R.layout.gal_box, parent, false)
-                return Gal_viewHolder(view)
+                return Gal_viewHolder(vieww)
             }
         }
 

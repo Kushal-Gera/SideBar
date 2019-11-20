@@ -9,14 +9,15 @@
     tools:context=".Fragments.DietFrag">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/diet_anim"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="center"
         android:layout_marginStart="-60dp"
         android:layout_marginTop="-60dp"
         android:layout_marginEnd="-60dp"
-        android:layout_marginBottom="-60dp"
-        app:lottie_autoPlay="true"
+        android:layout_marginBottom="-80dp"
+        app:lottie_autoPlay="false"
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/food"
         app:lottie_speed="0.5"
@@ -37,6 +38,6 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:paddingBottom="300dp" />
+        android:paddingBottom="10dp" />
 
 </LinearLayout>

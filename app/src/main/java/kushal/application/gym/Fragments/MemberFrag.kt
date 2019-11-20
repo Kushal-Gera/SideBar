@@ -103,12 +103,12 @@ class MemberFrag : Fragment() {
 
     private fun setVal() {
 
-        val ref = FirebaseDatabase.getInstance().reference.child("gallery").child("images")
-        ref.push().child("img").setValue("Silver")
-        ref.push().child("img").setValue("Thisjcsjs")
-        ref.push().child("img").setValue("Thisnnss")
-        ref.push().child("img").setValue("hcnsnsn")
-
+        val ref = FirebaseDatabase.getInstance().reference.child("diet").child("cut")
+        ref.child("name").setValue("Cutting Diet")
+        ref.push().child("breakfast").setValue("Silver")
+        ref.push().child("lunch").setValue("Thisjcsjs")
+        ref.push().child("snack").setValue("Thisnnss")
+        ref.push().child("dinner").setValue("hcnsnsn")
 
     }
 
