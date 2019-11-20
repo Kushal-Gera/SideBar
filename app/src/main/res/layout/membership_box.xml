@@ -15,18 +15,21 @@
 
         <ImageView
             android:id="@+id/mem_icon"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
+            android:background="@drawable/tint_blue_circle"
             android:contentDescription="@string/description"
+            android:elevation="4dp"
+            android:padding="25dp"
             android:src="@drawable/plane1" />
 
         <TextView
             android:id="@+id/mem_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:textAllCaps="false"
             android:textColor="@color/white"

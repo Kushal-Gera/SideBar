@@ -13,6 +13,7 @@
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
         android:background="@color/backgroundDark"
         android:gravity="center"
         android:orientation="vertical"
@@ -46,8 +47,7 @@
                 android:gravity="center"
                 android:text="Kushal Gera"
                 android:textColor="#FFF"
-                android:textSize="22sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="22sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -283,6 +283,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginBottom="30dp"
             android:gravity="start"
             android:orientation="vertical">
 
@@ -292,9 +293,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:drawableStart="@drawable/logout"
                 android:drawablePadding="5dp"
+                android:gravity="center"
                 android:text="@string/logout"
                 android:textColor="#DEDEDE"
                 android:textSize="19sp" />
@@ -306,8 +308,9 @@
                 android:layout_gravity="start"
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/call"
+                android:drawableStart="@drawable/contact"
                 android:drawablePadding="5dp"
+                android:gravity="center"
                 android:text="@string/contact_us"
                 android:textColor="#DEDEDE"
                 android:textSize="19sp" />

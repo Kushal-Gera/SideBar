@@ -3,14 +3,12 @@ package kushal.application.gym.Fragments
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DataSnapshot
@@ -20,7 +18,6 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_diet.*
 import kotlinx.android.synthetic.main.fragment_diet.view.*
 import kushal.application.gym.Items.MemberItems
-
 import kushal.application.gym.R
 import kushal.application.gym.ViewHolders.Diet_viewHolder
 
@@ -39,6 +36,12 @@ class DietFrag : Fragment() {
         pd.setMessage("Loading Please Wait !")
         pd.show()
 
+        val colorList = arrayListOf(
+                R.drawable.bg_trans_blue,
+                R.drawable.bg_trans_pink,
+                R.drawable.bg_trans_green
+            )
+
         val options = FirebaseRecyclerOptions.Builder<MemberItems>()
             .setQuery(ref, MemberItems::class.java).build()
 
@@ -51,6 +54,8 @@ class DietFrag : Fragment() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         pd.dismiss()
                         diet_anim.playAnimation()
+
+                        holder.ll.setBackgroundResource(colorList[i%colorList.size])
 
                         if (node_id == "bulk")
                             holder.logo.setImageDrawable(resources.getDrawable(R.drawable.pizza))
@@ -66,6 +71,7 @@ class DietFrag : Fragment() {
                         }
 
                     }
+
                     override fun onCancelled(databaseError: DatabaseError) {
                         Log.e("TAG", "onCancelled: Error")
                     }

@@ -60,7 +60,7 @@ class MemberFrag : Fragment() {
                         val icon = dataSnapshot.child("star").value.toString()
 
                         if (icon == "1") {
-                            holder.icon.setPadding(30, 30, 30, 30)
+                            holder.icon.setPadding(100, 100, 100, 100)
                         } else if (icon == "2") {
                             holder.icon.setImageDrawable(resources.getDrawable(R.drawable.plane2))
                         } else if (icon == "3") {
@@ -72,7 +72,7 @@ class MemberFrag : Fragment() {
                         holder.duration.text = "/$duration"
                         holder.desc.text = title
                         holder.desc2.text = desc
-                        holder.price.text = price
+                        holder.price.text = "    $price"
 
                     }
 
@@ -86,9 +86,9 @@ class MemberFrag : Fragment() {
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Mem_viewHolder {
-                val view =
+                val vieww =
                     LayoutInflater.from(context).inflate(R.layout.membership_box, parent, false)
-                return Mem_viewHolder(view)
+                return Mem_viewHolder(vieww)
             }
         }
 

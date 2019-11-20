@@ -69,8 +69,9 @@ class MainActivity : AppCompatActivity() {
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
         contact.setOnClickListener {
+            onBackPressed()
             val builder = AlertDialog.Builder(this, R.style.AlertDialogGreen)
-            builder.setTitle("Contact Us Here")
+            builder.setTitle("Contact Us Here :")
                 .setMessage("+91 $number")
                 .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
                     //whatsApp
@@ -87,9 +88,10 @@ class MainActivity : AppCompatActivity() {
             builder.create().show()
         }
         logout.setOnClickListener {
+            onBackPressed()
             val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
             builder.setTitle("Do you really want to Logout ?")
-                .setMessage("You can Login later,\nAll progress will be saved !")
+                .setMessage("Don't worry! All progress will be saved")
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
                     //auth.logout()
                 }
