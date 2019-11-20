@@ -1,6 +1,7 @@
 package kushal.application.gym
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -22,6 +23,9 @@ class LoginAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.statusBarColor = resources.getColor(R.color.backgroundDark, resources.newTheme())
+        }
 
         if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))

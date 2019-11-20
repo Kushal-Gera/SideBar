@@ -3,12 +3,12 @@ package kushal.application.gym
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private var IS_SHORT = false
     private var ON_HOME = true
+    private val number = 8588910153
 
     val fManager by lazy {
         supportFragmentManager
@@ -68,7 +69,22 @@ class MainActivity : AppCompatActivity() {
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
         contact.setOnClickListener {
-            Toast.makeText(this, " hey", Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this, R.style.AlertDialogGreen)
+            builder.setTitle("Contact Us Here")
+                .setMessage("+91 $number")
+                .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
+                    //whatsApp
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse("https://wa.me/+91$number")
+                    startActivity(i)
+                }
+                .setNegativeButton("Call") { dialogInterface, pos ->
+                    //dont call, just take to dialer
+                    val i = Intent(Intent.ACTION_DIAL)
+                    i.data = Uri.parse("tel:$number")
+                    startActivity(i)
+                }
+            builder.create().show()
         }
         logout.setOnClickListener {
             val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
@@ -77,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
                     //auth.logout()
                 }
-                .setNegativeButton("No"){dialogInterface, i ->
+                .setNegativeButton("No") { dialogInterface, i ->
                     //do nothing
                 }
             builder.create().show()
@@ -89,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpMenuItems() {
 
         home_tv.setOnClickListener {
-            header_text.setText("Sidebar App")
+            header_text.text = getString(R.string.home)
             colorToWhite(it)
             fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
             ON_HOME = true
@@ -98,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
         membership_tv.setOnClickListener {
             colorToWhite(it)
-            header_text.setText("Membership Plans")
+            header_text.text = getString(R.string.memberships)
             // further changes specific to membership plans
             fManager.beginTransaction().replace(R.id.layout, MemberFrag()).commit()
             ON_HOME = false
@@ -107,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         }
         perform_tv.setOnClickListener {
             colorToWhite(it)
-            header_text.setText("My Performance")
+            header_text.text = getString(R.string.performance)
             fManager.beginTransaction().replace(R.id.layout, PerformFrag()).commit()
             ON_HOME = false
 
@@ -115,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         }
         exercise_tv.setOnClickListener {
             colorToWhite(it)
-            header_text.setText("Exercise Routines")
+            header_text.text = getString(R.string.exercises)
             fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
             ON_HOME = false
 
@@ -123,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         }
         diet_tv.setOnClickListener {
             colorToWhite(it)
-            header_text.setText("Diet Guide")
+            header_text.text = getString(R.string.diet_guide)
             fManager.beginTransaction().replace(R.id.layout, DietFrag()).commit()
             ON_HOME = false
 
@@ -131,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         }
         gallery_tv.setOnClickListener {
             colorToWhite(it)
-            header_text.setText("Gallery")
+            header_text.text = getString(R.string.gallery)
             fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
             ON_HOME = false
 
@@ -185,7 +201,7 @@ class MainActivity : AppCompatActivity() {
 
         } else if (!ON_HOME) {
             fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
-            header_text.text = "SideBar App"
+            header_text.text = getString(R.string.home)
             colorToWhite(home_tv)
             ON_HOME = !ON_HOME
         } else
