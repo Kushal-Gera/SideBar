@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DataSnapshot
@@ -36,11 +37,9 @@ class DietFrag : Fragment() {
         pd.setMessage("Loading Please Wait !")
         pd.show()
 
-        val colorList = arrayListOf(
-                R.drawable.bg_trans_blue,
-                R.drawable.bg_trans_pink,
-                R.drawable.bg_trans_green
-            )
+        view.diet_anim.setOnClickListener {
+            view.diet_anim.playAnimation()
+        }
 
         val options = FirebaseRecyclerOptions.Builder<MemberItems>()
             .setQuery(ref, MemberItems::class.java).build()
@@ -48,25 +47,23 @@ class DietFrag : Fragment() {
         val adapter = object : FirebaseRecyclerAdapter<MemberItems, Diet_viewHolder>(options) {
             override fun onBindViewHolder(holder: Diet_viewHolder, i: Int, model: MemberItems) {
 
-                val node_id = getRef(i).key ?: return
+                val nodeId = getRef(i).key ?: return
 
-                ref.child(node_id).addValueEventListener(object : ValueEventListener {
+                ref.child(nodeId).addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         pd.dismiss()
-                        diet_anim.playAnimation()
+                        view.diet_anim.playAnimation()
 
-                        holder.ll.setBackgroundResource(colorList[i%colorList.size])
-
-                        if (node_id == "bulk")
-                            holder.logo.setImageDrawable(resources.getDrawable(R.drawable.pizza))
-                        else if (node_id == "cut")
-                            holder.logo.setImageDrawable(resources.getDrawable(R.drawable.coffee))
+                        val url = dataSnapshot.child("logo").value.toString()
+                        Glide.with(context!!).load(url)
+                            .placeholder(resources.getDrawable(R.drawable.healthy))
+                            .into(holder.logo)
 
                         val title = dataSnapshot.child("name").value.toString()
                         holder.title.text = title
 
                         holder.itemView.setOnClickListener {
-                            //new activity
+                            //new activity or may be re-direct to PDF
                             Toast.makeText(context!!, "hey", Toast.LENGTH_SHORT).show()
                         }
 

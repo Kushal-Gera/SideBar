@@ -3,6 +3,7 @@ package kushal.application.gym.Fragments
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ import kushal.application.gym.ViewHolders.Mem_viewHolder
 
 
 class MemberFrag : Fragment() {
+    lateinit var adapter: FirebaseRecyclerAdapter<MemberItems, Mem_viewHolder>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,13 +42,13 @@ class MemberFrag : Fragment() {
         val options = FirebaseRecyclerOptions.Builder<MemberItems>()
             .setQuery(ref, MemberItems::class.java).build()
 
-        val adapter = object : FirebaseRecyclerAdapter<MemberItems, Mem_viewHolder>(options) {
+        adapter = object : FirebaseRecyclerAdapter<MemberItems, Mem_viewHolder>(options) {
 
             override fun onBindViewHolder(holder: Mem_viewHolder, i: Int, model: MemberItems) {
 
-                val node_id = getRef(i).key ?: return
+                val nodeId = getRef(i).key ?: return
 
-                ref.child(node_id).addValueEventListener(object : ValueEventListener {
+                ref.child(nodeId).addValueEventListener(object : ValueEventListener {
                     @SuppressLint("SetTextI18n")
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         pd.dismiss()
@@ -99,17 +101,20 @@ class MemberFrag : Fragment() {
 
 
         return view
+
     }
 
     private fun setVal() {
 
-        val ref = FirebaseDatabase.getInstance().reference.child("diet").child("cut")
-        ref.child("name").setValue("Cutting Diet")
-        ref.push().child("breakfast").setValue("Silver")
-        ref.push().child("lunch").setValue("Thisjcsjs")
-        ref.push().child("snack").setValue("Thisnnss")
-        ref.push().child("dinner").setValue("hcnsnsn")
+        val ref = FirebaseDatabase.getInstance().reference.child("diet").child("weightLoss")
+        ref.child("name").setValue("Weight Loss")
+        ref.child("logo").setValue("")
+        ref.child("breakfast").push().setValue("Silver")
+        ref.child("lunch").push().setValue("Thisjcsjs")
+        ref.child("snack").push().setValue("Thisnnss")
+        ref.child("dinner").push().setValue("hcnsnsn")
 
     }
+
 
 }
