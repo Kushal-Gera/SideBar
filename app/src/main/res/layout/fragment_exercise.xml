@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".Fragments.DietFrag">
+    tools:context=".Fragments.ExerciseFrag">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/diet_anim"
+        android:id="@+id/exercise_anim"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:layout_gravity="center"
@@ -17,14 +17,16 @@
         android:layout_marginTop="-70dp"
         android:layout_marginEnd="-60dp"
         android:layout_marginBottom="-90dp"
+        android:padding="60dp"
+        android:visibility="invisible"
         app:lottie_autoPlay="false"
         app:lottie_loop="false"
-        app:lottie_rawRes="@raw/food"
+        app:lottie_rawRes="@raw/muscle"
         app:lottie_speed="0.5"
         tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/diet_drop_down"
+        android:id="@+id/exercise_drop_down"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -32,13 +34,13 @@
         android:layout_marginEnd="20dp"
         android:drawableEnd="@drawable/down"
         android:drawableTint="@color/white"
-        android:text="@string/diet_routines"
+        android:text="@string/exercise_routines"
         android:textColor="@color/white"
         android:textSize="18sp"
         tools:ignore="UnusedAttribute" />
 
     <TextView
-        android:id="@+id/diet_desc"
+        android:id="@+id/exercise_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -50,13 +52,13 @@
         android:paddingTop="8dp"
         android:paddingEnd="12dp"
         android:paddingBottom="8dp"
-        android:text="@string/diet_rules"
+        android:text="@string/exercise_rules"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/diet_recView"
+        android:id="@+id/exercise_recView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"

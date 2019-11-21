@@ -1,5 +1,6 @@
 package kushal.application.gym.Fragments
 
+
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
@@ -16,13 +17,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_diet.view.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.android.synthetic.main.fragment_exercise.view.*
 import kushal.application.gym.Items.MemberItems
 import kushal.application.gym.R
-import kushal.application.gym.ViewHolders.Diet_viewHolder
+import kushal.application.gym.ViewHolders.Exercise_viewHolder
 
-class DietFrag : Fragment() {
+class ExerciseFrag : Fragment() {
 
     var IS_DOWN = true
 
@@ -30,28 +30,33 @@ class DietFrag : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_diet, container, false)
+        val view = inflater.inflate(R.layout.fragment_exercise, container, false)
 
-        val ref = FirebaseDatabase.getInstance().reference.child("diet")
+        val ref = FirebaseDatabase.getInstance().reference.child("exercise")
 
         val pd = ProgressDialog(context, R.style.ProgressDialog)
         pd.setMessage("Loading Please Wait !")
         pd.show()
 
-        view.diet_anim.setOnClickListener {
-            view.diet_anim.playAnimation()
+        view.exercise_anim.setOnClickListener {
+            view.exercise_anim.visibility = View.VISIBLE
+            view.exercise_anim.playAnimation()
         }
 
-        view.diet_drop_down.setOnClickListener {
+        view.exercise_drop_down.setOnClickListener {
             if (IS_DOWN) {
-                view.diet_desc.animate().alpha(1f).translationY(0f).duration = 400
-                view.diet_desc.visibility = View.VISIBLE
-                view.diet_drop_down.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up, 0)
+                view.exercise_desc.animate().alpha(1f).translationY(0f).duration = 400
+                view.exercise_desc.visibility = View.VISIBLE
+                view.exercise_drop_down.setCompoundDrawablesWithIntrinsicBounds(
+                    0,
+                    0,
+                    R.drawable.up,
+                    0
+                )
             } else {
-                view.diet_desc.animate().translationY(-30f).alpha(0f).duration = 400
-                view.diet_desc.visibility = View.GONE
-                view.diet_drop_down.setCompoundDrawablesWithIntrinsicBounds(
+                view.exercise_desc.animate().translationY(-30f).alpha(0f).duration = 400
+                view.exercise_desc.visibility = View.GONE
+                view.exercise_drop_down.setCompoundDrawablesWithIntrinsicBounds(
                     0,
                     0,
                     R.drawable.down,
@@ -62,23 +67,23 @@ class DietFrag : Fragment() {
 
         }
 
-
         val options = FirebaseRecyclerOptions.Builder<MemberItems>()
             .setQuery(ref, MemberItems::class.java).build()
 
-        val adapter = object : FirebaseRecyclerAdapter<MemberItems, Diet_viewHolder>(options) {
-            override fun onBindViewHolder(holder: Diet_viewHolder, i: Int, model: MemberItems) {
+        val adapter = object : FirebaseRecyclerAdapter<MemberItems, Exercise_viewHolder>(options) {
+            override fun onBindViewHolder(holder: Exercise_viewHolder, i: Int, model: MemberItems) {
 
                 val nodeId = getRef(i).key ?: return
 
                 ref.child(nodeId).addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         pd.dismiss()
-                        view.diet_anim.playAnimation()
+                        view.exercise_anim.visibility = View.VISIBLE
+                        view.exercise_anim.playAnimation()
 
                         val url = dataSnapshot.child("logo").value.toString()
                         Glide.with(context!!).load(url)
-                            .placeholder(resources.getDrawable(R.drawable.healthy))
+                            .placeholder(resources.getDrawable(R.drawable.weight_loss))
                             .into(holder.logo)
 
                         val title = dataSnapshot.child("name").value.toString()
@@ -97,15 +102,15 @@ class DietFrag : Fragment() {
                 })
             }
 
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Diet_viewHolder {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Exercise_viewHolder {
                 val vieww =
-                    LayoutInflater.from(context).inflate(R.layout.diet_box, parent, false)
-                return Diet_viewHolder(vieww)
+                    LayoutInflater.from(context).inflate(R.layout.exercise_box, parent, false)
+                return Exercise_viewHolder(vieww)
             }
         }
 
-        view.diet_recView.layoutManager = GridLayoutManager(context!!, 2)
-        view.diet_recView.adapter = adapter
+        view.exercise_recView.layoutManager = GridLayoutManager(context!!, 2)
+        view.exercise_recView.adapter = adapter
         adapter.startListening()
 
         return view

@@ -19,4 +19,7 @@
     <string name="contact_us">Contact Us</string>
     <string name="home">Home</string>
     <string name="get_code">Get Code</string>
+    <string name="diet_rules">The given Diet Formats are based for an average Indian person; Considering a weight = 70 Kg and height = 5\'8\".\nYou may need to modify your macro-nutrients according to your BMI.</string>
+    <string name="exercise_rules">The given Exercise Routines are based on a Beginner to Intermediate level; Considering a weight = 70 Kg and height = 5\'8\".\nYou may need to modify your weights according to your capacity.</string>
+    <string name="exercise_routines">Exercise Routines</string>
 </resources>

@@ -3,7 +3,6 @@ package kushal.application.gym.Fragments
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -106,13 +105,15 @@ class MemberFrag : Fragment() {
 
     private fun setVal() {
 
-        val ref = FirebaseDatabase.getInstance().reference.child("diet").child("weightLoss")
-        ref.child("name").setValue("Weight Loss")
-        ref.child("logo").setValue("")
-        ref.child("breakfast").push().setValue("Silver")
-        ref.child("lunch").push().setValue("Thisjcsjs")
-        ref.child("snack").push().setValue("Thisnnss")
-        ref.child("dinner").push().setValue("hcnsnsn")
+        val ref = FirebaseDatabase.getInstance().reference
+            .child("exercise").child("bulk")
+
+        ref.child("name").setValue("Clean Bulk")
+        ref.child("logo")
+            .setValue("https://firebasestorage.googleapis.com/v0/b/gymapp-b70b9.appspot.com/o/clean_bulk.jpg?alt=media&token=ea97f130-dee4-4b02-8620-676fa24fc3e4")
+
+        ref.child("workout").push().setValue("Silver")
+        ref.child("cardio").push().setValue("Thisjcsjs")
 
     }
 

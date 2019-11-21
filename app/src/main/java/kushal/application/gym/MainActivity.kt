@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         exercise_tv.setOnClickListener {
             colorToWhite(it)
             header_text.text = getString(R.string.exercises)
-            fManager.beginTransaction().replace(R.id.layout, GalleryFrag()).commit()
+            fManager.beginTransaction().replace(R.id.layout, ExerciseFrag()).commit()
             ON_HOME = false
 
             onBackPressed()

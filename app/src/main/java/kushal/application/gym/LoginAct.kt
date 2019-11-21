@@ -32,6 +32,7 @@ class LoginAct : AppCompatActivity() {
             finish()
         }
 
+        image_view.animate().alpha(1f).duration = 800
         progressBar3.visibility = View.INVISIBLE
 
         getCode.alpha = 0f;     getCode.translationY = 50f

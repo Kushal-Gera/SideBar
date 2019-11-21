@@ -47,7 +47,8 @@
                 android:gravity="center"
                 android:text="Kushal Gera"
                 android:textColor="#FFF"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,7 +57,8 @@
                 android:gravity="center"
                 android:text="25 yrs"
                 android:textColor="#FFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -362,7 +364,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="8"
                     android:gravity="center"
-                    android:text="Sidebar App"
+                    android:text="@string/app_name"
                     android:textColor="#FFF"
                     android:textSize="20sp" />
 
