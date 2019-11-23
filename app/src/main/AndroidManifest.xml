@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="kushal.application.gym">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name="kushal.application.gym.LoginAct" />
-        <activity android:name="kushal.application.gym.Settings" />
-        <activity android:name="kushal.application.gym.MainActivity">
+        <activity android:name=".DetailsAct"></activity>
+        <activity android:name=".LoginAct" />
+        <activity android:name=".Settings" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

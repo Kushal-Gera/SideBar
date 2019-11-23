@@ -50,7 +50,7 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            tools:text="s dl sl sl ssl s lsl m l sl ls  sl s  ld  ls l sls  lss " />
+            tools:text="This is the most cost effective plan and help you workout care-free" />
 
         <TextView
             android:id="@+id/mem_desc2"
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="22sp"
-            tools:text="clsclm l dld  ld l dld  dl d l sls dl sl  dl d l sls dl sl  dl d l sls dl sl  dl d l sls dl sl sl ssl s lsl m l sl ls  sl sls l sls ls ls  sls ls l sls  ld  ls l sls  lss " />
+            tools:text="Platinum is th executive plan for the dedicated ones !" />
 
         <LinearLayout
             android:layout_width="200dp"

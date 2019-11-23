@@ -22,4 +22,12 @@
     <string name="diet_rules">The given Diet Formats are based for an average Indian person; Considering a weight = 70 Kg and height = 5\'8\".\nYou may need to modify your macro-nutrients according to your BMI.</string>
     <string name="exercise_rules">The given Exercise Routines are based on a Beginner to Intermediate level; Considering a weight = 70 Kg and height = 5\'8\".\nYou may need to modify your weights according to your capacity.</string>
     <string name="exercise_routines">Exercise Routines</string>
+    <string name="help_us_know_you_better">Help Us Know You Better</string>
+    <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="enter_name">Enter Name *</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save_now">Save Now</string>
+    <string name="enter_age">Enter Age *</string>
+    <string name="enter_your_weight">Enter Weight *</string>
 </resources>

@@ -41,24 +41,24 @@
                 android:src="@drawable/dev" />
 
             <TextView
+                android:id="@+id/main_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Kushal Gera"
                 android:textColor="#FFF"
                 android:textSize="22sp"
-                tools:ignore="HardcodedText" />
+                tools:text="Kushal Gera" />
 
             <TextView
+                android:id="@+id/main_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="25 yrs"
                 android:textColor="#FFF"
                 android:textSize="20sp"
-                tools:ignore="HardcodedText" />
+                tools:text="25 yrs" />
 
         </LinearLayout>
 
@@ -163,14 +163,14 @@
                     tools:ignore="UnusedAttribute" />
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:contentDescription="@string/description"
-                    android:src="@drawable/perf"
-                    android:tint="#FFCA28" />
+                    android:src="@drawable/green_dot"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

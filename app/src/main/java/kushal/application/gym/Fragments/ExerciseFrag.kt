@@ -47,12 +47,7 @@ class ExerciseFrag : Fragment() {
             if (IS_DOWN) {
                 view.exercise_desc.animate().alpha(1f).translationY(0f).duration = 400
                 view.exercise_desc.visibility = View.VISIBLE
-                view.exercise_drop_down.setCompoundDrawablesWithIntrinsicBounds(
-                    0,
-                    0,
-                    R.drawable.up,
-                    0
-                )
+                view.exercise_drop_down.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.up, 0)
             } else {
                 view.exercise_desc.animate().translationY(-30f).alpha(0f).duration = 400
                 view.exercise_desc.visibility = View.GONE

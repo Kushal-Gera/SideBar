@@ -54,6 +54,9 @@ class LoginAct : AppCompatActivity() {
             }
         }
         login_btn.setOnClickListener {
+
+            startActivity(Intent(this, DetailsAct::class.java))//remove this
+
             val userCode = otp.editText!!.text.toString().trim { it <= ' ' }
             if (!TextUtils.isEmpty(userCode))
                 verifyCode(userCode)

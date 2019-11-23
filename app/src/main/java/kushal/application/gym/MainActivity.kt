@@ -1,6 +1,7 @@
 package kushal.application.gym
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,10 +34,19 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    @SuppressLint("RestrictedApi")
+
+    @SuppressLint("RestrictedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPreferences = getSharedPreferences("shared_pref", Context.MODE_PRIVATE)
+        if (!sharedPreferences.getBoolean("is_prev", false)){
+            startActivity(Intent(this, DetailsAct::class.java))
+        }
+
+        main_name.text = sharedPreferences.getString("name", "User")
+        main_age.text = sharedPreferences.getString("age", "22") + " yrs"
 
 
         drawer.setOnClickListener {
@@ -67,39 +78,6 @@ class MainActivity : AppCompatActivity() {
 
         setUpMenuItems()
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
-
-        contact.setOnClickListener {
-            onBackPressed()
-            val builder = AlertDialog.Builder(this, R.style.AlertDialogGreen)
-            builder.setTitle("Contact Us Here :")
-                .setMessage("+91 $number")
-                .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
-                    //whatsApp
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse("https://wa.me/+91$number")
-                    startActivity(i)
-                }
-                .setNegativeButton("Call") { dialogInterface, pos ->
-                    //dont call, just take to dialer
-                    val i = Intent(Intent.ACTION_DIAL)
-                    i.data = Uri.parse("tel:$number")
-                    startActivity(i)
-                }
-            builder.create().show()
-        }
-        logout.setOnClickListener {
-            onBackPressed()
-            val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
-            builder.setTitle("Do you really want to Logout ?")
-                .setMessage("Don't worry! All progress will be saved")
-                .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
-                    //auth.logout()
-                }
-                .setNegativeButton("No") { dialogInterface, i ->
-                    //do nothing
-                }
-            builder.create().show()
-        }
 
 
     }
@@ -154,6 +132,42 @@ class MainActivity : AppCompatActivity() {
             ON_HOME = false
 
             onBackPressed()
+        }
+
+
+        contact.setOnClickListener {
+            //            onBackPressed()
+            val builder = AlertDialog.Builder(this, R.style.AlertDialogGreen)
+            builder.setTitle("Contact Us Here :")
+                .setMessage("D-2 FF, Moti Nagar, New Delhi\n+91 $number")
+                .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
+                    //whatsApp
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse("https://wa.me/+91$number")
+                    startActivity(i)
+                }
+                .setNegativeButton("Call") { dialogInterface, pos ->
+                    //dont call, just take to dialer
+                    val i = Intent(Intent.ACTION_DIAL)
+                    i.data = Uri.parse("tel:$number")
+                    startActivity(i)
+                }
+            builder.create().show()
+        }
+        logout.setOnClickListener {
+            //            onBackPressed()
+            val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+            builder.setTitle("Do you really want to Logout ?")
+                .setMessage("Don't worry! All progress will be saved")
+                .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
+                    //auth.logout()
+                    Toast.makeText(this, "No we can't permit that... hahhaha", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                .setNegativeButton("No") { dialogInterface, i ->
+                    //do nothing
+                }
+            builder.create().show()
         }
 
     }

@@ -61,10 +61,12 @@ class MemberFrag : Fragment() {
                         val icon = dataSnapshot.child("star").value.toString()
 
                         if (icon == "1") {
-                            holder.icon.setPadding(100, 100, 100, 100)
-                        } else if (icon == "2") {
+                            holder.icon.setPadding(80, 80, 80, 80)
+                        }
+                        else if (icon == "2") {
                             holder.icon.setImageDrawable(resources.getDrawable(R.drawable.plane2))
-                        } else if (icon == "3") {
+                        }
+                        else if (icon == "3") {
                             holder.icon.setImageDrawable(resources.getDrawable(R.drawable.plane3))
                         }
 

@@ -9,6 +9,8 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        window.statusBarColor = resources.getColor(R.color.backgroundDark)
+
 
         back.setOnClickListener {
             onBackPressed()
