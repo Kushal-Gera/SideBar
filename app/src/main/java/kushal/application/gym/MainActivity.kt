@@ -1,9 +1,11 @@
 package kushal.application.gym
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -40,8 +42,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
+            }
+        }
+
         val sharedPreferences = getSharedPreferences("shared_pref", Context.MODE_PRIVATE)
-        if (!sharedPreferences.getBoolean("is_prev", false)){
+        if (!sharedPreferences.getBoolean("is_prev", false)) {
             startActivity(Intent(this, DetailsAct::class.java))
         }
 

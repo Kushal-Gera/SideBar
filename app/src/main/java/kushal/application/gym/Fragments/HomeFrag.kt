@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kushal.application.gym.LoginAct
 import kushal.application.gym.R
+import kushal.application.gym.Scanner
 
 class HomeFrag : Fragment() {
 
@@ -46,7 +47,7 @@ class HomeFrag : Fragment() {
         view.fab.setOnClickListener {
             it.animate().rotationBy(360f).duration = 800
             //do work here
-            startActivity(Intent(activity, LoginAct::class.java))
+            startActivity(Intent(activity, Scanner::class.java))
         }
 
 

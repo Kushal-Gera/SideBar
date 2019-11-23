@@ -49,4 +49,6 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:4.1.0'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
+    implementation 'me.dm7.barcodescanner:zxing:1.9'
+
 }
