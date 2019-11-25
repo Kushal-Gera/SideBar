@@ -114,8 +114,6 @@ class MemberFrag : Fragment() {
         ref.child("logo")
             .setValue("https://firebasestorage.googleapis.com/v0/b/gymapp-b70b9.appspot.com/o/clean_bulk.jpg?alt=media&token=ea97f130-dee4-4b02-8620-676fa24fc3e4")
 
-        ref.child("workout").push().setValue("Silver")
-        ref.child("cardio").push().setValue("Thisjcsjs")
 
     }
 
