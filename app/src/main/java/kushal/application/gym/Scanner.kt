@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.Result
@@ -33,8 +34,7 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             scannerView.startCamera()
             scannerView.setResultHandler(this)
-        }
-        else {
+        } else {
             AlertDialog.Builder(this, R.style.AlertDialogCustom)
                 .setTitle("Permissions are not Granted")
                 .setPositiveButton("Grant Now") { dialogInterface: DialogInterface, i: Int ->
@@ -45,6 +45,7 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
                 .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->
                     finish()
                 }
+                .setCancelable(false)
                 .create().show()
         }
 
@@ -67,22 +68,26 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(result: Result) {
-        val myResult = result.text
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Scan Result")
-        builder.setPositiveButton(
-            "OK"
-        ) { dialog, which -> scannerView.resumeCameraPreview(this) }
-        builder.setNeutralButton(
-            "Visit"
-        ) { dialog, which ->
-            val browserIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse(myResult))
-            startActivity(browserIntent)
+        val myText = result.text
+
+        if (myText.contains("Kushal"))
+            Toast.makeText(this, "hello + $myText", Toast.LENGTH_SHORT).show()
+        else{
+            AlertDialog.Builder(this, R.style.AlertDialogCustom)
+                .setTitle("Not the right QR Code")
+                .setMessage("Please retry !")
+                .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->
+                    finish()
+                }
+                .setPositiveButton("Retry") { dialogInterface: DialogInterface, i: Int ->
+                    dialogInterface.dismiss()
+                    scannerView.resumeCameraPreview(this)
+                }
+                .setCancelable(false)
+                .create().show()
         }
-        builder.setMessage(result.text)
-        val alert1 = builder.create()
-        alert1.show()
+
+
     }
 
 
