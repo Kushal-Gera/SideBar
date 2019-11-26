@@ -25,16 +25,16 @@
                 android:layout_width="35dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/back"
-                android:contentDescription="@string/description" />
+                android:contentDescription="@string/description"
+                android:src="@drawable/back" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginStart="-10dp"
                 android:layout_weight="8"
                 android:gravity="center"
-                android:layout_marginStart="-10dp"
                 android:text="@string/settings"
                 android:textColor="#FFF"
                 android:textSize="20sp" />
@@ -63,29 +63,41 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@drawable/img_circle"
+            android:contentDescription="@string/description"
             android:padding="15dp"
-            android:src="@drawable/dev"
-            android:contentDescription="@string/description" />
+            android:src="@drawable/dev" />
 
         <TextView
+            android:id="@+id/setting_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Kushal Gera"
             android:textColor="#FFF"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Kushal Gera" />
 
         <TextView
+            android:id="@+id/setting_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="25 yrs"
             android:textColor="#FFF"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:text="25 yrs" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:drawableEnd="@drawable/edit"
+        android:text="@string/edit_details"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 </LinearLayout>

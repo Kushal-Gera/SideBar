@@ -15,8 +15,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kushal.application.gym.Fragments.*
+
+val SHARED_PREF = "shared_pref"
+val USER_NAME = "name"
+val USER_AGE = "age"
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    val auth = FirebaseAuth.getInstance()
+
 
     @SuppressLint("RestrictedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,18 +50,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
             }
         }
 
-        val sharedPreferences = getSharedPreferences("shared_pref", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+//        sharedPreferences.edit().putBoolean("is_prev", false).apply()
+
         if (!sharedPreferences.getBoolean("is_prev", false)) {
             startActivity(Intent(this, DetailsAct::class.java))
         }
 
-        main_name.text = sharedPreferences.getString("name", "User")
-        main_age.text = sharedPreferences.getString("age", "22") + " yrs"
+        main_name.text = sharedPreferences.getString(USER_NAME, "User")
+        main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
 
 
         drawer.setOnClickListener {
@@ -168,9 +177,10 @@ class MainActivity : AppCompatActivity() {
             builder.setTitle("Do you really want to Logout ?")
                 .setMessage("Don't worry! All progress will be saved")
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
-                    //auth.logout()
-                    Toast.makeText(this, "No we can't permit that... hahhaha", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this, "Logging Out...", Toast.LENGTH_SHORT).show()
+                    auth.signOut()
+                    startActivity(Intent(this, LoginAct::class.java))
+                    finish()
                 }
                 .setNegativeButton("No") { dialogInterface, i ->
                     //do nothing

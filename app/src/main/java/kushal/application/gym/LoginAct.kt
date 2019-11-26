@@ -43,7 +43,7 @@ class LoginAct : AppCompatActivity() {
             val number = phone.editText!!.text.toString().trim { it <= ' ' }
             if (!TextUtils.isEmpty(number) && number.length > 9) {
 
-//                getVerificationCode("+91$number")
+                getVerificationCode("+91$number")
 
                 progressBar3.visibility = View.VISIBLE
                 login_btn.animate().alpha(1f).translationY(0f).duration = 800
@@ -54,9 +54,6 @@ class LoginAct : AppCompatActivity() {
             }
         }
         login_btn.setOnClickListener {
-
-            startActivity(Intent(this, DetailsAct::class.java))//remove this
-
             val userCode = otp.editText!!.text.toString().trim { it <= ' ' }
             if (!TextUtils.isEmpty(userCode))
                 verifyCode(userCode)

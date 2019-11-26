@@ -16,10 +16,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:alpha="0"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
+        android:alpha="0"
         android:contentDescription="@string/description"
         android:scaleType="centerCrop"
         android:src="@drawable/logo" />
@@ -42,9 +42,11 @@
             android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="30dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -61,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:importantForAutofill="no"
-                android:textColorHint="#BBB">
+                android:textColorHint="@color/hint_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -84,6 +86,7 @@
             android:id="@+id/ll2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
@@ -106,7 +109,7 @@
                 android:layout_height="60dp"
                 android:hint="@string/enter_otp"
                 android:inputType="number"
-                android:textColorHint="#BBB">
+                android:textColorHint="@color/hint_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

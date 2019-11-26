@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#2196F3</color>
+<!--    <color name="mtrl_textinput_default_box_stroke_color">#DDD</color>-->
 
     <color name="background">#262A32</color>
     <color name="backgroundDark">#1d2026</color>

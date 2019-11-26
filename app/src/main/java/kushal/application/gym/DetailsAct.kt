@@ -7,17 +7,20 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsAct : AppCompatActivity() {
 
     var IS_MALE = true
 
+    val auth = FirebaseAuth.getInstance().currentUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         window.statusBarColor = resources.getColor(R.color.backgroundDark)
-
 
 
         save.setOnClickListener(View.OnClickListener {
@@ -57,8 +60,14 @@ class DetailsAct : AppCompatActivity() {
     }
 
     private fun saveData() {
-        val preferences = getSharedPreferences("shared_pref", Context.MODE_PRIVATE)
-        val editor = preferences.edit()
+        val shared_pref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        val editor = shared_pref.edit()
+
+        //online data saving
+        val ref = FirebaseDatabase.getInstance().reference.child("Users")
+        ref.child(auth!!.uid)
+            .child("name")
+            .setValue(shared_pref!!.getString(USER_NAME, "u" + System.currentTimeMillis()).toString())
 
         //offline data saved
         editor.putString("name", name.editText?.text.toString()).apply()
@@ -70,9 +79,6 @@ class DetailsAct : AppCompatActivity() {
             editor.putString("gender", "female").apply()
 
         editor.putBoolean("is_prev", true).apply()
-
-
-        //online data saving
 
 
     }
