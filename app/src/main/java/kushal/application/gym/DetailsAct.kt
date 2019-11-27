@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsAct : AppCompatActivity() {
@@ -63,11 +64,6 @@ class DetailsAct : AppCompatActivity() {
         val shared_pref = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
         val editor = shared_pref.edit()
 
-        //online data saving
-        val ref = FirebaseDatabase.getInstance().reference.child("Users")
-        ref.child(auth!!.uid)
-            .child("name")
-            .setValue(shared_pref!!.getString(USER_NAME, "u" + System.currentTimeMillis()).toString())
 
         //offline data saved
         editor.putString("name", name.editText?.text.toString()).apply()
@@ -78,8 +74,22 @@ class DetailsAct : AppCompatActivity() {
         else
             editor.putString("gender", "female").apply()
 
-        editor.putBoolean("is_prev", true).apply()
 
+        //online data saving
+        val db = FirebaseFirestore.getInstance()
+        val user = hashMapOf(
+            "uid" to auth!!.uid,
+            "name" to shared_pref!!.getString(USER_NAME, "u"+System.currentTimeMillis()).toString(),
+            "number" to auth.phoneNumber.toString()
+        )
+
+        db.collection("Users").add(user as Map<String, Any>)
+            .addOnSuccessListener {
+            editor.putBoolean("is_prev", true).apply()
+        }
+            .addOnFailureListener {
+                Toast.makeText(this, "Internet Might Not Be Available", Toast.LENGTH_SHORT).show()
+            }
 
     }
 

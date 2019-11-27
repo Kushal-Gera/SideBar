@@ -57,8 +57,6 @@ class PerformFrag : Fragment() {
 //                may be use a 'for loop' for children in dataSnapshot
                     if (dataSnapshot.hasChildren()) {
                         for (data in dataSnapshot.children) {
-                            if (data.key.equals("name"))
-                                return
 
                             val str2 = data.child("date").value.toString()
                             val event2 = Event(

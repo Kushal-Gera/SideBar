@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kushal.application.gym.Fragments.*
 
@@ -64,6 +65,17 @@ class MainActivity : AppCompatActivity() {
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
+
+        /**
+         * Can be used with firebase recycler adapter to fetch list of number and name
+         */
+        FirebaseFirestore.getInstance().collection("Users").get()
+            .addOnCompleteListener{
+            for (i in it.result!!){
+                val s = i.data["name"]
+                Toast.makeText(this, "hello $s", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
         drawer.setOnClickListener {
