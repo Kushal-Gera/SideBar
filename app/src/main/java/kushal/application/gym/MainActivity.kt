@@ -24,6 +24,7 @@ val SHARED_PREF = "shared_pref"
 val USER_NAME = "name"
 val USER_AGE = "age"
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private var IS_SHORT = false
@@ -245,12 +246,14 @@ class MainActivity : AppCompatActivity() {
 
             IS_SHORT = !IS_SHORT
 
-        } else if (!ON_HOME) {
+        }
+        else if (!ON_HOME) {
             fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
             header_text.text = getString(R.string.home)
             colorToWhite(home_tv)
             ON_HOME = !ON_HOME
-        } else
+        }
+        else
             super.onBackPressed()
 
     }
