@@ -22,17 +22,19 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class PerformFrag : Fragment() {
 
     private val auth = FirebaseAuth.getInstance().currentUser
     val monthFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
     val smallDateFormat = SimpleDateFormat("MMM dd yyyy", Locale.getDefault())
+    private val DAYS_TILL_SHOW = 31
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_perform, container, false)
 
         view.calendar_view.setLocale(TimeZone.getDefault(), Locale.getDefault())
@@ -41,31 +43,31 @@ class PerformFrag : Fragment() {
         view.month.text = monthFormat.format(view.calendar_view.firstDayOfCurrentMonth)
         view.calendar_view.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             override fun onDayClick(dateClicked: Date?) {
-
             }
 
             override fun onMonthScroll(month: Date) {
                 view.month.text = monthFormat.format(month)
             }
-
         })
 
 
         FirebaseDatabase.getInstance().reference.child("Users")
             .child(auth!!.uid).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                may be use a 'for loop' for children in dataSnapshot
                     if (dataSnapshot.hasChildren()) {
+                        var i = 0
                         for (data in dataSnapshot.children) {
-
+                            if (i>DAYS_TILL_SHOW)
+                                break
                             val str2 = data.child("date").value.toString()
                             val event2 = Event(
                                 resources.getColor(R.color.green_pastel),
                                 smallDateFormat.parse(str2).time
                             )
                             view.calendar_view.addEvent(event2)
-                            perf_loading.visibility = LottieAnimationView.GONE
+                            i++
                         }
+                        perf_loading.visibility = LottieAnimationView.GONE
                     }
                 }
 
@@ -77,6 +79,5 @@ class PerformFrag : Fragment() {
 
         return view
     }
-
 
 }

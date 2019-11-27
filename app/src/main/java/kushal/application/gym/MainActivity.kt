@@ -15,10 +15,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kushal.application.gym.Fragments.*
+import kushal.application.gym.WorkManagers.RemoveDates
+import java.util.concurrent.TimeUnit
 
 val SHARED_PREF = "shared_pref"
 val USER_NAME = "name"
@@ -78,7 +81,6 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
-
         drawer.setOnClickListener {
             menu.visibility = View.VISIBLE
             layout
@@ -109,6 +111,11 @@ class MainActivity : AppCompatActivity() {
         setUpMenuItems()
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
+
+        val request = PeriodicWorkRequest.Builder(
+            RemoveDates::class.java,
+            5, TimeUnit.DAYS).build()
+        WorkManager.getInstance(this).enqueue(request)
 
     }
 
@@ -246,14 +253,12 @@ class MainActivity : AppCompatActivity() {
 
             IS_SHORT = !IS_SHORT
 
-        }
-        else if (!ON_HOME) {
+        } else if (!ON_HOME) {
             fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
             header_text.text = getString(R.string.home)
             colorToWhite(home_tv)
             ON_HOME = !ON_HOME
-        }
-        else
+        } else
             super.onBackPressed()
 
     }
