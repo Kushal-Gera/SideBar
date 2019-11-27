@@ -70,13 +70,13 @@ class MainActivity : AppCompatActivity() {
         /**
          * Can be used with firebase recycler adapter to fetch list of number and name
          */
-        FirebaseFirestore.getInstance().collection("Users").get()
-            .addOnCompleteListener{
-            for (i in it.result!!){
-                val s = i.data["name"]
-                Toast.makeText(this, "hello $s", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        FirebaseFirestore.getInstance().collection("Users").get()
+//            .addOnCompleteListener{
+//            for (i in it.result!!){
+//                val s = i.data["name"]
+//                Toast.makeText(this, "hello $s", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
 
         drawer.setOnClickListener {

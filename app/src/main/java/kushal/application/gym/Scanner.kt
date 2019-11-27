@@ -76,11 +76,8 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
     override fun handleResult(result: Result) {
         val myText = result.text
 
-        if (myText.contains(CHECKING_NAME)) {
+        if (myText.contains(CHECKING_NAME))
             setValue()
-//            add custom dialog
-            Toast.makeText(this, "Marked : )", Toast.LENGTH_SHORT).show()
-        }
         else {
             AlertDialog.Builder(this, R.style.AlertDialogCustom)
                 .setTitle("Not the right QR Code")
@@ -108,6 +105,7 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
             .child(auth!!.uid)
             .push().child("date").setValue(date)
 
+        Toast.makeText(this, "Marked : )", Toast.LENGTH_SHORT).show()
     }
 
 }
