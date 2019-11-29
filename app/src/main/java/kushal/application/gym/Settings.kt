@@ -41,19 +41,20 @@ class Settings : AppCompatActivity() {
         }
         setting_dev.setOnClickListener {
             val sBar =
-                Snackbar.make(it, "Developed by Kushal Gera: ", Snackbar.LENGTH_LONG)
+                Snackbar.make(it, "Developed by Kushal Gera :", Snackbar.LENGTH_LONG)
             sBar.setAction("Git Hub") {
                 startActivity(
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kushal-Gera"))
                 )
-            }.setActionTextColor(resources.getColor(R.color.green_pastel))
+            }
+                .setActionTextColor(resources.getColor(R.color.yellow_pastel))
 
             val params = sBar.view.layoutParams as FrameLayout.LayoutParams
             params.setMargins(
-                params.leftMargin + 30,
+                params.leftMargin + 20,
                 params.topMargin,
-                params.rightMargin + 30,
-                params.bottomMargin + 50
+                params.rightMargin + 20,
+                params.bottomMargin + 30
             )
 
             sBar.view.layoutParams = params

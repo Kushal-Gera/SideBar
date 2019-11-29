@@ -1,6 +1,7 @@
 package kushal.application.gym.Fragments
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -50,9 +51,9 @@ class PerformFrag : Fragment() {
             }
         })
 
-
         FirebaseDatabase.getInstance().reference.child("Users")
             .child(auth!!.uid).addValueEventListener(object : ValueEventListener {
+                @SuppressLint("SetTextI18n")
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.hasChildren()) {
                         var i = 0
@@ -67,15 +68,18 @@ class PerformFrag : Fragment() {
                             view.calendar_view.addEvent(event2)
                             i++
                         }
-                        perf_loading.visibility = LottieAnimationView.GONE
+                        perf_loading.visibility = View.GONE
+                        perf_percent.text = "${i*100/30} %"
+                        perf_progress.progress = i*100/30
                     }
+                    else
+                        perf_loading.visibility = View.GONE
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.e("TAG", "onCancelled: Error")
                 }
             })
-
 
         return view
     }

@@ -44,7 +44,7 @@
         android:layout_gravity="start"
         android:layout_marginStart="60dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/drop_menu"
         android:paddingStart="12dp"
         android:paddingTop="8dp"
@@ -52,7 +52,7 @@
         android:paddingBottom="8dp"
         android:text="@string/diet_rules"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
