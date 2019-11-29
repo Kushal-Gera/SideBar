@@ -31,4 +31,9 @@
     <string name="enter_age">Enter Age *</string>
     <string name="enter_your_weight">Enter Weight *</string>
     <string name="edit_details">Edit Details</string>
+    <string name="launch_camera_on_start">Launch Camera on Start</string>
+    <string name="developers">Developers</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="share_app">Share App</string>
 </resources>

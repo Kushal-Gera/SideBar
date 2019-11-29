@@ -1,103 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDark"
     android:orientation="vertical"
+    android:overScrollMode="never"
     tools:context=".Settings">
-
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/bg_toolbar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/description"
-                android:src="@drawable/back" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginStart="-10dp"
-                android:layout_weight="8"
-                android:gravity="center"
-                android:text="@string/settings"
-                android:textColor="#FFF"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@string/description" />
-
-        </LinearLayout>
-
-    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp">
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/back" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="-10dp"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:text="@string/settings"
+                    android:textColor="#FFF"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/description" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/img_circle"
+                android:contentDescription="@string/description"
+                android:padding="15dp"
+                android:src="@drawable/dev" />
+
+            <TextView
+                android:id="@+id/setting_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Kushal Gera" />
+
+            <TextView
+                android:id="@+id/setting_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                tools:text="25 yrs" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/setting_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/edit"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/edit_details"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@drawable/img_circle"
-            android:contentDescription="@string/description"
-            android:padding="15dp"
-            android:src="@drawable/dev" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
 
-        <TextView
-            android:id="@+id/setting_name"
+        <Switch
+            android:id="@+id/setting_switch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:textColor="#FFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:text="Kushal Gera" />
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:paddingStart="15dp"
+            android:paddingEnd="5dp"
+            android:text="@string/launch_camera_on_start"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:thumb="@drawable/circle"
+            android:track="@drawable/track_selector" />
 
         <TextView
-            android:id="@+id/setting_age"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
+
+        <TextView
+            android:id="@+id/setting_dev"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/person"
+            android:paddingStart="15dp"
+            android:paddingTop="25dp"
+            android:paddingEnd="15dp"
+            android:text="@string/developers"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:textColor="#FFF"
-            android:textSize="24sp"
-            tools:text="25 yrs" />
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
+
+        <TextView
+            android:id="@+id/setting_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/share"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/share_app"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
+
+        <TextView
+            android:id="@+id/setting_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/rate"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/rate_us"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
+
+        <TextView
+            android:id="@+id/setting_suggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/suggestion"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="15dp"
+            android:text="@string/suggestions"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="#444" />
+
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white" />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:drawableEnd="@drawable/edit"
-        android:text="@string/edit_details"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

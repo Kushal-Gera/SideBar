@@ -78,7 +78,7 @@ class ExerciseFrag : Fragment() {
 
                         val url = dataSnapshot.child("logo").value.toString()
                         Glide.with(context!!).load(url)
-                            .placeholder(resources.getDrawable(R.drawable.weight_loss))
+                            .placeholder(resources.getDrawable(R.drawable.gym))
                             .into(holder.logo)
 
                         val title = dataSnapshot.child("name").value.toString()

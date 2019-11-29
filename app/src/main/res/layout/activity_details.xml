@@ -14,7 +14,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/let_s_get_started"
-        android:textColor="#FFA726"
+        android:textColor="@color/yellow_pastel"
         android:textSize="30sp"
         android:textStyle="bold" />
 

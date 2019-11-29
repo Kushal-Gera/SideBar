@@ -23,7 +23,7 @@
             android:layout_height="120dp"
             android:contentDescription="@string/description"
             android:scaleType="centerCrop"
-            android:src="@drawable/weight_loss" />
+            android:src="@drawable/gym" />
 
         <TextView
             android:id="@+id/exercise_title"

@@ -9,10 +9,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.zxing.Result
@@ -37,24 +39,23 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            scannerView.startCamera()
-            scannerView.setResultHandler(this)
-        } else {
-            AlertDialog.Builder(this, R.style.AlertDialogCustom)
-                .setTitle("Permissions are not Granted")
-                .setPositiveButton("Grant Now") { dialogInterface: DialogInterface, i: Int ->
-                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                    intent.data = Uri.fromParts("package", packageName, null)
-                    startActivity(intent)
-                }
-                .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->
-                    finish()
-                }
-                .setCancelable(false)
-                .create().show()
-        }
+        requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
 
+    }
+
+    private fun showDialog() {
+        AlertDialog.Builder(this, R.style.AlertDialogCustom)
+            .setTitle("Permissions are not Granted")
+            .setPositiveButton("Grant Now") { dialogInterface: DialogInterface, i: Int ->
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                intent.data = Uri.fromParts("package", packageName, null)
+                startActivity(intent)
+            }
+            .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->
+                finish()
+            }
+            .setCancelable(false)
+            .create().show()
     }
 
     override fun onResume() {
@@ -107,5 +108,31 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         Toast.makeText(this, "Marked : )", Toast.LENGTH_SHORT).show()
     }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.isNotEmpty()) {
+            scannerView.startCamera()
+            scannerView.setResultHandler(this)
+        }
+        else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                //denied
+                requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
+            } else {
+                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    //allowed
+                    onResume()
+                } else {
+                    //set to never ask again
+                    showDialog()
+                }
+            }
+        }
+    }
+
 
 }

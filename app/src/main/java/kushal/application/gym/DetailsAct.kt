@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_details.*
 
@@ -78,21 +77,24 @@ class DetailsAct : AppCompatActivity() {
         //online data saving
         val db = FirebaseFirestore.getInstance()
         val user = hashMapOf(
-            "uid" to auth!!.uid,
-            "name" to shared_pref!!.getString(USER_NAME, "u"+System.currentTimeMillis()).toString(),
-            "number" to auth.phoneNumber.toString()
+            "name" to shared_pref!!.getString(
+                USER_NAME, "u" + System.currentTimeMillis()).toString(),
+            "number" to auth!!.phoneNumber.toString()
         )
 
-        db.collection("Users").add(user as Map<String, Any>)
+
+        db.collection("Users").document(auth.uid).set(user as Map<String, Any>)
             .addOnSuccessListener {
-            editor.putBoolean("is_prev", true).apply()
-        }
-            .addOnFailureListener {
+                editor.putBoolean("is_prev", true).apply()
+            }.addOnFailureListener {
                 Toast.makeText(this, "Internet Might Not Be Available", Toast.LENGTH_SHORT).show()
             }
 
     }
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {
+        if (intent.getBooleanExtra("allowed_back", false))
+            super.onBackPressed()
+    }
 
 }

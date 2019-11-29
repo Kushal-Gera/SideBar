@@ -1,11 +1,9 @@
 package kushal.application.gym
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -19,6 +17,7 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.Fragments.*
 import kushal.application.gym.WorkManagers.RemoveDates
 import java.util.concurrent.TimeUnit
@@ -54,18 +53,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
-            }
-        }
-
         val sharedPreferences = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-//        sharedPreferences.edit().putBoolean("is_prev", false).apply()
 
         if (!sharedPreferences.getBoolean("is_prev", false)) {
             startActivity(Intent(this, DetailsAct::class.java))
         }
+        if (sharedPreferences.getBoolean(IS_ON, false)) {
+            Handler().postDelayed({
+                fab.performClick()
+            }, 400)
+        }
+
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
@@ -77,7 +75,8 @@ class MainActivity : AppCompatActivity() {
 //            .addOnCompleteListener{
 //            for (i in it.result!!){
 //                val s = i.data["name"]
-//                Toast.makeText(this, "hello $s", Toast.LENGTH_SHORT).show()
+//                val number = i.data["number"]
+//                Toast.makeText(this, "hello $s : $number", Toast.LENGTH_SHORT).show()
 //            }
 //        }
 
@@ -114,7 +113,8 @@ class MainActivity : AppCompatActivity() {
 
         val request = PeriodicWorkRequest.Builder(
             RemoveDates::class.java,
-            5, TimeUnit.DAYS).build()
+            5, TimeUnit.DAYS
+        ).build()
         WorkManager.getInstance(this).enqueue(request)
 
     }
