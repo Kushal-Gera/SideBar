@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         //request 1 for remove excess dates
         val request = PeriodicWorkRequest.Builder(
             RemoveDates::class.java,
-            5, TimeUnit.DAYS
+            2, TimeUnit.DAYS
         ).addTag("RemoveDates").build()
         workManager
             .enqueueUniquePeriodicWork("RemoveDates", ExistingPeriodicWorkPolicy.KEEP, request)
@@ -131,6 +131,7 @@ class MainActivity : AppCompatActivity() {
         ).addTag("LinkDatabase").build()
         workManager
             .enqueueUniquePeriodicWork("LinkDatabase", ExistingPeriodicWorkPolicy.KEEP, request2)
+
 
     }
 

@@ -1,14 +1,12 @@
 package kushal.application.gym.DateDatabase
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface MyDAO {
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     fun insertDate(date: DateData)
 
 
@@ -16,7 +14,5 @@ interface MyDAO {
     fun readDates() : List<DateData>
 
 
-    @Update
-    fun updateDate(data: DateData)
 
 }

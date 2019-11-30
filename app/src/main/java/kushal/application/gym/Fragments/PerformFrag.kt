@@ -1,16 +1,25 @@
 package kushal.application.gym.Fragments
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.room.Room
+import androidx.work.ListenableWorker
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_perform.view.*
+import kushal.application.gym.DateDatabase.DateData
 import kushal.application.gym.DateDatabase.DateDatabase
 import kushal.application.gym.R
 import java.text.SimpleDateFormat
@@ -28,9 +37,8 @@ class PerformFrag : Fragment() {
         ).allowMainThreadQueries().build()
     }
 
-    private val auth = FirebaseAuth.getInstance().currentUser
     val monthFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
-    val smallDateFormat = SimpleDateFormat("MMM dd yyyy", Locale.getDefault())
+    private val smallDateFormat = SimpleDateFormat("MMM dd yyyy", Locale.getDefault())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +71,8 @@ class PerformFrag : Fragment() {
                 view.calendar_view.addEvent(event2)
             }
             view.perf_loading.visibility = View.GONE
-        } else
+        }
+        else
             view.perf_loading.visibility = View.GONE
 
 

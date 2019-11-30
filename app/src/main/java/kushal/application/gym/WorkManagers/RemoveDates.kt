@@ -16,16 +16,19 @@ class RemoveDates(val context: Context, workerParams: WorkerParameters) :
     val DAYS_TILL_SAVING = 31
     val auth = FirebaseAuth.getInstance().currentUser
 
+
     override fun doWork(): Result {
 
-        if (auth != null) {
-            removeValues()
-        }
+        if (auth != null)
+            return removeValues()
+        else
+            return Result.success()
 
-        return Result.success()
     }
 
-    private fun removeValues() {
+    private fun removeValues(): Result {
+        var r: Result = Result.success()
+
         FirebaseDatabase.getInstance().reference.child("Users").child(auth!!.uid)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -41,9 +44,11 @@ class RemoveDates(val context: Context, workerParams: WorkerParameters) :
 
                 override fun onCancelled(p0: DatabaseError) {
                     Log.i("TAG", "ERROR")
+                    r = Result.retry()
                 }
             })
 
+        return r
     }
 
 

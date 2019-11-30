@@ -17,7 +17,6 @@ import kushal.application.gym.DateDatabase.DateDatabase
 class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
 
-
     val database by lazy {
         Room.databaseBuilder(
             context.applicationContext,
@@ -25,35 +24,49 @@ class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
             "dates.db"
         ).allowMainThreadQueries().build()
     }
+
     private val auth = FirebaseAuth.getInstance().currentUser
-//    private val DAYS_TILL_SHOW = 31
 
 
     override fun doWork(): Result {
+
         if (auth != null)
-            FirebaseDatabase.getInstance().reference.child("Users")
-                .child(auth.uid).addValueEventListener(object : ValueEventListener {
-                    @SuppressLint("SetTextI18n")
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            for (data in dataSnapshot.children) {
-                                val str2 = data.child("date").value.toString()
+            return linkdata()
+        else
+            return Result.success()
 
-                                //adding dates to database
-                                val dateData = DateData()
-                                dateData.date = str2
-                                database.myDAO.updateDate(dateData)
+    }
 
-                            }
+    private fun linkdata(): Result {
+        var r = Result.success()
+
+        FirebaseDatabase.getInstance().reference.child("Users")
+            .child(auth!!.uid).addValueEventListener(object : ValueEventListener {
+                @SuppressLint("SetTextI18n")
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.hasChildren()) {
+
+                        for (data in dataSnapshot.children) {
+                            val str2 = data.child("date").value.toString()
+
+                            //adding dates to database
+                            val dateData = DateData()
+                            dateData.date = str2
+
+                            database.myDAO.insertDate(dateData)
+
                         }
                     }
+                }
 
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        Log.e("TAG", "onCancelled: Error")
-                    }
-                })
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e("TAG", "onCancelled: Error")
+                    r = Result.retry()
+                }
+            })
 
-        return Result.success()
+        return r
+
     }
 
 }
