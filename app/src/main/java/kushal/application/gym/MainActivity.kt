@@ -13,12 +13,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.Fragments.*
+import kushal.application.gym.WorkManagers.LinkDatabase
 import kushal.application.gym.WorkManagers.RemoveDates
 import java.util.concurrent.TimeUnit
 
@@ -111,11 +113,24 @@ class MainActivity : AppCompatActivity() {
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
 
+//        Work Requests ************************************************
+        val workManager = WorkManager.getInstance(this)
+
+        //request 1 for remove excess dates
         val request = PeriodicWorkRequest.Builder(
             RemoveDates::class.java,
             5, TimeUnit.DAYS
-        ).build()
-        WorkManager.getInstance(this).enqueue(request)
+        ).addTag("RemoveDates").build()
+        workManager
+            .enqueueUniquePeriodicWork("RemoveDates", ExistingPeriodicWorkPolicy.KEEP, request)
+
+        //request 2 for linking dates
+        val request2 = PeriodicWorkRequest.Builder(
+            LinkDatabase::class.java, 1,
+            TimeUnit.DAYS
+        ).addTag("LinkDatabase").build()
+        workManager
+            .enqueueUniquePeriodicWork("LinkDatabase", ExistingPeriodicWorkPolicy.KEEP, request2)
 
     }
 

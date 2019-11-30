@@ -8,40 +8,40 @@
     android:orientation="vertical"
     tools:context=".Fragments.PerformFrag">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="-20dp">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="-20dp">-->
 
-        <ProgressBar
-            android:id="@+id/perf_progress"
-            style="?android:progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:padding="50dp"
-            android:progress="80"
-            android:progressDrawable="@drawable/progress_bar"
-            android:rotation="-90" />
+<!--        <ProgressBar-->
+<!--            android:id="@+id/perf_progress"-->
+<!--            style="?android:progressBarStyleHorizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="140dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:padding="50dp"-->
+<!--            android:progress="80"-->
+<!--            android:progressDrawable="@drawable/progress_bar"-->
+<!--            android:rotation="-90" />-->
 
-        <TextView
-            android:id="@+id/perf_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:gravity="center"
-            android:text="00 %"
-            android:textColor="@color/white"
-            android:textSize="28dp"
-            tools:ignore="HardcodedText,SpUsage" />
+<!--        <TextView-->
+<!--            android:id="@+id/perf_percent"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="00 %"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="28dp"-->
+<!--            tools:ignore="HardcodedText,SpUsage" />-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
 
     <TextView
