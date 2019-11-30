@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundDark"
     android:orientation="vertical"
-    tools:context=".LoginAct">
+    tools:context=".Activities.LoginAct">
 
     <ImageView
         android:id="@+id/image_view"

@@ -18,12 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Scanner" />
+        <activity android:name=".Activities.Scanner" />
         <activity
-            android:name=".DetailsAct"
+            android:name=".Activities.DetailsAct"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginAct"
+            android:name=".Activities.LoginAct"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".Activities.Settings"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

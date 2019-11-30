@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import kushal.application.gym.LoginAct
 import kushal.application.gym.R
-import kushal.application.gym.Scanner
+import kushal.application.gym.Activities.Scanner
 
 class HomeFrag : Fragment() {
 

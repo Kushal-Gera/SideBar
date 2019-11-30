@@ -1,4 +1,4 @@
-package kushal.application.gym
+package kushal.application.gym.Activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.Fragments.*
+import kushal.application.gym.R
 import kushal.application.gym.WorkManagers.LinkDatabase
 import kushal.application.gym.WorkManagers.RemoveDates
 import java.util.concurrent.TimeUnit
@@ -187,10 +188,14 @@ class MainActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-
+        main_photo.setOnClickListener {
+            Toast.makeText(this, "Edit from Settings", Toast.LENGTH_SHORT).show()
+        }
         contact.setOnClickListener {
             //            onBackPressed()
-            val builder = AlertDialog.Builder(this, R.style.AlertDialogGreen)
+            val builder = AlertDialog.Builder(this,
+                R.style.AlertDialogGreen
+            )
             builder.setTitle("Contact Us Here :")
                 .setMessage("D-2 FF, Moti Nagar, New Delhi\n+91 $number")
                 .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
@@ -209,7 +214,9 @@ class MainActivity : AppCompatActivity() {
         }
         logout.setOnClickListener {
             //            onBackPressed()
-            val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)
+            val builder = AlertDialog.Builder(this,
+                R.style.AlertDialogCustom
+            )
             builder.setTitle("Do you really want to Logout ?")
                 .setMessage("Don't worry! All progress will be saved")
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->

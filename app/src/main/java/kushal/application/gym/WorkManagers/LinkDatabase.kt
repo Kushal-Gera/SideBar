@@ -45,16 +45,14 @@ class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
                 @SuppressLint("SetTextI18n")
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.hasChildren()) {
-
                         for (data in dataSnapshot.children) {
-                            val str2 = data.child("date").value.toString()
 
+                            val str2 = data.child("date").value.toString()
                             //adding dates to database
                             val dateData = DateData()
                             dateData.date = str2
 
                             database.myDAO.insertDate(dateData)
-
                         }
                     }
                 }

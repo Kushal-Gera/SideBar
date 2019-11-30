@@ -1,4 +1,4 @@
-package kushal.application.gym
+package kushal.application.gym.Activities
 
 import android.Manifest
 import android.app.AlertDialog
@@ -9,15 +9,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.zxing.Result
+import kushal.application.gym.R
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -44,7 +43,9 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     private fun showDialog() {
-        AlertDialog.Builder(this, R.style.AlertDialogCustom)
+        AlertDialog.Builder(this,
+            R.style.AlertDialogCustom
+        )
             .setTitle("Permissions are not Granted")
             .setPositiveButton("Grant Now") { dialogInterface: DialogInterface, i: Int ->
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
@@ -80,7 +81,9 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         if (myText.contains(CHECKING_NAME))
             setValue()
         else {
-            AlertDialog.Builder(this, R.style.AlertDialogCustom)
+            AlertDialog.Builder(this,
+                R.style.AlertDialogCustom
+            )
                 .setTitle("Not the right QR Code")
                 .setMessage("Please retry !")
                 .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->

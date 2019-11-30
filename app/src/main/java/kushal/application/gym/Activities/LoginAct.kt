@@ -1,4 +1,4 @@
-package kushal.application.gym
+package kushal.application.gym.Activities
 
 import android.content.Intent
 import android.os.Build
@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
+import kushal.application.gym.R
 import java.util.concurrent.TimeUnit
 
 class LoginAct : AppCompatActivity() {

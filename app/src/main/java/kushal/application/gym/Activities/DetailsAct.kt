@@ -1,4 +1,4 @@
-package kushal.application.gym
+package kushal.application.gym.Activities
 
 import android.content.Context
 import android.graphics.Color
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_details.*
+import kushal.application.gym.R
 
 class DetailsAct : AppCompatActivity() {
 
@@ -79,14 +80,16 @@ class DetailsAct : AppCompatActivity() {
         val user = hashMapOf(
             "name" to shared_pref!!.getString(
                 USER_NAME, "u" + System.currentTimeMillis()).toString(),
-            "number" to auth!!.phoneNumber.toString()
+            "number" to auth!!.phoneNumber.toString(),
+            "image" to ""
         )
 
 
         db.collection("Users").document(auth.uid).set(user as Map<String, Any>)
             .addOnSuccessListener {
                 editor.putBoolean("is_prev", true).apply()
-            }.addOnFailureListener {
+            }
+            .addOnFailureListener {
                 Toast.makeText(this, "Internet Might Not Be Available", Toast.LENGTH_SHORT).show()
             }
 

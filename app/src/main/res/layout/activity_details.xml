@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundDark"
     android:orientation="vertical"
-    tools:context=".DetailsAct">
+    tools:context=".Activities.DetailsAct">
 
     <TextView
         android:layout_width="match_parent"

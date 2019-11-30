@@ -14,5 +14,7 @@ interface MyDAO {
     fun readDates() : List<DateData>
 
 
+    @Query("delete from dates")
+    fun deleteDate()
 
 }

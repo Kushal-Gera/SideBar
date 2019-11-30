@@ -1,23 +1,35 @@
-package kushal.application.gym
+package kushal.application.gym.Activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.webkit.MimeTypeMap
 import android.widget.FrameLayout
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_settings.*
+import kushal.application.gym.R
 
 
 val IS_ON = "is_on"
 
+@Suppress("DEPRECATION")
 class Settings : AppCompatActivity() {
-    val WEB_APP_LINK =
-        "http://play.google.com/store/apps/details?id=" + "kushal.application.gym"
+
+    val WEB_APP_LINK = "http://play.google.com/store/apps/details?id=" + "kushal.application.gym"
     val GMAIL_LINK = "kushalgera1212@gmail.com"
 
     val sharedPreferences by lazy {
@@ -34,6 +46,20 @@ class Settings : AppCompatActivity() {
         setting_age.text = sharedPreferences.getString(USER_AGE, "22") + " yrs"
         var TURN_ON = sharedPreferences.getBoolean(IS_ON, false)
         setting_switch.isChecked = TURN_ON
+
+
+        FirebaseDatabase.getInstance().reference.child("pics")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(dataSnapshot: DatabaseError) {
+                }
+
+                override fun onDataChange(data: DataSnapshot) {
+                    val uri = Uri.parse(data.child("image").value.toString())
+                    Glide.with(baseContext).load(uri).into(setting_photo)
+
+                }
+            })
 
 
         back.setOnClickListener {
@@ -85,6 +111,13 @@ class Settings : AppCompatActivity() {
             view.isChecked = TURN_ON
             sharedPreferences.edit().putBoolean(IS_ON, TURN_ON).apply()
         }
+        setting_photo.setOnClickListener {
+            val i = Intent()
+            i.type = "image/*"
+            i.action = Intent.ACTION_GET_CONTENT
+
+            startActivityForResult(Intent.createChooser(i, "Choose from :"), 1)
+        }
 
 
     }
@@ -115,5 +148,52 @@ class Settings : AppCompatActivity() {
         setting_name.text = sharedPreferences.getString(USER_NAME, "User")
         setting_age.text = sharedPreferences.getString(USER_AGE, "22") + " yrs"
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == 1 && (data != null)) {
+
+            try {
+                val uri = data.data
+                Glide.with(baseContext).load(uri).into(setting_photo)
+
+                val storageRef = FirebaseStorage.getInstance().reference
+                storageRef.child("pics")
+                    .child("${System.currentTimeMillis()}.${getExtention(uri!!)}")
+                    .putFile(uri)
+                    .addOnSuccessListener {
+                        val url = it.storage.downloadUrl
+
+                        url.addOnSuccessListener {
+                            FirebaseDatabase.getInstance().reference.child("pics")
+                                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                .child("image")
+                                .setValue(url.result.toString())
+                        }
+                        Toast.makeText(baseContext, "done", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(baseContext, "Error", Toast.LENGTH_SHORT).show()
+                    }
+            } catch (e: Exception) {
+
+                e.printStackTrace()
+                Toast.makeText(baseContext, "Try Again", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+    }
+
+    fun getExtention(uri: Uri): String {
+
+        val resolver = contentResolver
+        val mimeType = MimeTypeMap.getSingleton()
+
+        return mimeType.getMimeTypeFromExtension(resolver.getType(uri)).toString()
+
+    }
+
 
 }
