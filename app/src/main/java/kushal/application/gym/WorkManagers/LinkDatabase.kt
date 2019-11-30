@@ -25,37 +25,33 @@ class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
             "dates.db"
         ).allowMainThreadQueries().build()
     }
-    val auth = FirebaseAuth.getInstance().currentUser
-    private val DAYS_TILL_SHOW = 31
+    private val auth = FirebaseAuth.getInstance().currentUser
+//    private val DAYS_TILL_SHOW = 31
 
 
     override fun doWork(): Result {
+        if (auth != null)
+            FirebaseDatabase.getInstance().reference.child("Users")
+                .child(auth.uid).addValueEventListener(object : ValueEventListener {
+                    @SuppressLint("SetTextI18n")
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.hasChildren()) {
+                            for (data in dataSnapshot.children) {
+                                val str2 = data.child("date").value.toString()
 
-        FirebaseDatabase.getInstance().reference.child("Users")
-            .child(auth!!.uid).addValueEventListener(object : ValueEventListener {
-                @SuppressLint("SetTextI18n")
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.hasChildren()) {
-                        var i = 0
-                        for (data in dataSnapshot.children) {
-                            if (i > DAYS_TILL_SHOW)
-                                break
-                            val str2 = data.child("date").value.toString()
+                                //adding dates to database
+                                val dateData = DateData()
+                                dateData.date = str2
+                                database.myDAO.updateDate(dateData)
 
-                            //adding dates to database
-                            val dateData = DateData()
-                            dateData.date = str2
-                            database.myDAO.updateDate(dateData)
-
-                            i++
+                            }
                         }
                     }
-                }
 
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.e("TAG", "onCancelled: Error")
-                }
-            })
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        Log.e("TAG", "onCancelled: Error")
+                    }
+                })
 
         return Result.success()
     }
