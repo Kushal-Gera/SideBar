@@ -1,9 +1,12 @@
 package kushal.application.gym.Activities
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,12 +21,7 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.Fragments.*
 import kushal.application.gym.R
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         if (!sharedPreferences.getBoolean("is_prev", false)) {
             startActivity(Intent(this, DetailsAct::class.java))
         }
-        if (sharedPreferences.getBoolean(IS_ON, false)) {
+        if (sharedPreferences.getBoolean(CAM_START, false)) {
             Handler().postDelayed({
                 fab.performClick()
             }, 400)
@@ -104,17 +102,10 @@ class MainActivity : AppCompatActivity() {
             drawer.visibility = View.INVISIBLE
             IS_SHORT = true
 
-            FirebaseDatabase.getInstance().reference.child("pics")
-                .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onCancelled(dataSnapshot: DatabaseError) {
-                    }
 
-                    override fun onDataChange(data: DataSnapshot) {
-                        val uri = Uri.parse(data.child("image").value.toString())
-                        Glide.with(baseContext).load(uri).into(main_photo)
-                    }
-                })
+            val dp = sharedPreferences.getString("dp", "none")
+            if (!dp.equals("none"))
+                Glide.with(this).load(dp).into(main_photo)
 
         }
         settings.setOnClickListener {
@@ -207,7 +198,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         main_photo.setOnClickListener {
-            Toast.makeText(this, "Edit from Settings", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Edit in Settings", Toast.LENGTH_SHORT).show()
         }
         contact.setOnClickListener {
             //            onBackPressed()

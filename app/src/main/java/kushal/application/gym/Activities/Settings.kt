@@ -19,10 +19,12 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import kushal.application.gym.R
 
 
-val IS_ON = "is_on"
+val CAM_START = "is_on"
+val NOTI_RECEIVE = "noti"
 
 @Suppress("DEPRECATION")
 class Settings : AppCompatActivity() {
+
 
     val WEB_APP_LINK = "http://play.google.com/store/apps/details?id=" + "kushal.application.gym"
     val GMAIL_LINK = "kushalgera1212@gmail.com"
@@ -40,8 +42,12 @@ class Settings : AppCompatActivity() {
 
         setting_name.text = sharedPreferences.getString(USER_NAME, "User")
         setting_age.text = sharedPreferences.getString(USER_AGE, "22") + " yrs"
-        var TURN_ON = sharedPreferences.getBoolean(IS_ON, false)
+
+        var TURN_ON = sharedPreferences.getBoolean(CAM_START, false)
         setting_switch.isChecked = TURN_ON
+
+        var TURN_NOTI_ON = sharedPreferences.getBoolean(NOTI_RECEIVE, true)
+        setting_noti_switch.isChecked = TURN_NOTI_ON
 
 
         val dp = sharedPreferences.getString("dp", "none")
@@ -96,7 +102,13 @@ class Settings : AppCompatActivity() {
             val view = it as Switch
             TURN_ON = !TURN_ON
             view.isChecked = TURN_ON
-            sharedPreferences.edit().putBoolean(IS_ON, TURN_ON).apply()
+            sharedPreferences.edit().putBoolean(CAM_START, TURN_ON).apply()
+        }
+        setting_noti_switch.setOnClickListener {
+            val view = it as Switch
+            TURN_NOTI_ON = !TURN_NOTI_ON
+            view.isChecked = TURN_NOTI_ON
+            sharedPreferences.edit().putBoolean(NOTI_RECEIVE, TURN_NOTI_ON).apply()
         }
         setting_photo.setOnClickListener {
             val i = Intent()
@@ -140,7 +152,7 @@ class Settings : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == 1 && (data != null)) {
-            Toast.makeText(baseContext, "Uploading please wait", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, "Uploading...", Toast.LENGTH_SHORT).show()
             try {
                 val uri = data.data
                 Glide.with(baseContext).load(uri).into(setting_photo)

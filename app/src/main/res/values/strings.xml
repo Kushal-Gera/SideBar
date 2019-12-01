@@ -36,4 +36,6 @@
     <string name="rate_us">Rate Us</string>
     <string name="suggestions">Suggestions</string>
     <string name="share_app">Share App</string>
+    <string name="receive_notifications">Receive Notifications</string>
+    <string name="marked_successfully">Marked\nSuccessfully !</string>
 </resources>

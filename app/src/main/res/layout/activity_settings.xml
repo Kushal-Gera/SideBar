@@ -70,8 +70,7 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/setting_photo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -128,7 +127,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
@@ -153,12 +152,37 @@
             android:thumb="@drawable/circle"
             android:track="@drawable/track_selector" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="#444" />
+
+        <Switch
+            android:id="@+id/setting_noti_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="true"
+            android:paddingStart="15dp"
+            android:paddingTop="19dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="1dp"
+            android:text="@string/receive_notifications"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:thumb="@drawable/circle"
+            android:track="@drawable/track_selector" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:background="#444" />
 
@@ -174,7 +198,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
@@ -195,7 +219,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
@@ -216,7 +240,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
@@ -237,14 +261,13 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
             android:background="#444" />
 
 
@@ -252,7 +275,7 @@
             android:layout_width="180dp"
             android:layout_height="2dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
             android:background="@color/white" />
 

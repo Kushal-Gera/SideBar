@@ -2,20 +2,23 @@ package kushal.application.gym.Activities
 
 import android.Manifest
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.zxing.Result
+import kotlinx.android.synthetic.main.mark_dialog.*
 import kushal.application.gym.R
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import java.text.SimpleDateFormat
@@ -43,7 +46,8 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     private fun showDialog() {
-        AlertDialog.Builder(this,
+        AlertDialog.Builder(
+            this,
             R.style.AlertDialogCustom
         )
             .setTitle("Permissions are not Granted")
@@ -81,7 +85,8 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         if (myText.contains(CHECKING_NAME))
             setValue()
         else {
-            AlertDialog.Builder(this,
+            AlertDialog.Builder(
+                this,
                 R.style.AlertDialogCustom
             )
                 .setTitle("Not the right QR Code")
@@ -109,19 +114,28 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
             .child(auth!!.uid)
             .push().child("date").setValue(date)
 
-        Toast.makeText(this, "Marked : )", Toast.LENGTH_SHORT).show()
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.mark_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+
+        dialog.dialog_return.setOnClickListener {
+            dialog.dismiss()
+            finish()
+        }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.isNotEmpty()) {
             scannerView.startCamera()
             scannerView.setResultHandler(this)
-        }
-        else {
+        } else {
             if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
                 //denied
                 requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)

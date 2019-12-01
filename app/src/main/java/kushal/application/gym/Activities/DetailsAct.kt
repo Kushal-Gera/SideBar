@@ -80,8 +80,7 @@ class DetailsAct : AppCompatActivity() {
         val user = hashMapOf(
             "name" to shared_pref!!.getString(
                 USER_NAME, "u" + System.currentTimeMillis()).toString(),
-            "number" to auth!!.phoneNumber.toString(),
-            "image" to ""
+            "number" to auth!!.phoneNumber.toString()
         )
 
 
