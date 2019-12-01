@@ -16,8 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.Fragments.*
 import kushal.application.gym.R
@@ -97,6 +103,18 @@ class MainActivity : AppCompatActivity() {
 
             drawer.visibility = View.INVISIBLE
             IS_SHORT = true
+
+            FirebaseDatabase.getInstance().reference.child("pics")
+                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onCancelled(dataSnapshot: DatabaseError) {
+                    }
+
+                    override fun onDataChange(data: DataSnapshot) {
+                        val uri = Uri.parse(data.child("image").value.toString())
+                        Glide.with(baseContext).load(uri).into(main_photo)
+                    }
+                })
 
         }
         settings.setOnClickListener {

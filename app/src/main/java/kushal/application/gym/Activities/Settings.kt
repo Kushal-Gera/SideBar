@@ -14,11 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_settings.*
 import kushal.application.gym.R
@@ -36,6 +31,7 @@ class Settings : AppCompatActivity() {
         applicationContext.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
     }
 
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,18 +44,9 @@ class Settings : AppCompatActivity() {
         setting_switch.isChecked = TURN_ON
 
 
-        FirebaseDatabase.getInstance().reference.child("pics")
-            .child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onCancelled(dataSnapshot: DatabaseError) {
-                }
-
-                override fun onDataChange(data: DataSnapshot) {
-                    val uri = Uri.parse(data.child("image").value.toString())
-                    Glide.with(baseContext).load(uri).into(setting_photo)
-
-                }
-            })
+        val dp = sharedPreferences.getString("dp", "none")
+        if (!dp.equals("none"))
+            Glide.with(this).load(dp).into(setting_photo)
 
 
         back.setOnClickListener {
@@ -153,7 +140,7 @@ class Settings : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == 1 && (data != null)) {
-
+            Toast.makeText(baseContext, "Uploading please wait", Toast.LENGTH_SHORT).show()
             try {
                 val uri = data.data
                 Glide.with(baseContext).load(uri).into(setting_photo)
@@ -166,12 +153,10 @@ class Settings : AppCompatActivity() {
                         val url = it.storage.downloadUrl
 
                         url.addOnSuccessListener {
-                            FirebaseDatabase.getInstance().reference.child("pics")
-                                .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                                .child("image")
-                                .setValue(url.result.toString())
+                            sharedPreferences.edit().putString("dp", url.result.toString()).apply()
+                            Toast.makeText(baseContext, "Done", Toast.LENGTH_SHORT).show()
                         }
-                        Toast.makeText(baseContext, "done", Toast.LENGTH_SHORT).show()
+
                     }
                     .addOnFailureListener {
                         Toast.makeText(baseContext, "Error", Toast.LENGTH_SHORT).show()

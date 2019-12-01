@@ -31,15 +31,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/main_photo"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="@drawable/img_circle"
-                android:contentDescription="@string/description"
-                android:padding="10dp"
-                android:src="@drawable/person" />
+                android:src="@drawable/person"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#2479FF"/>
 
             <TextView
                 android:id="@+id/main_name"
