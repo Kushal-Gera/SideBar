@@ -38,4 +38,5 @@
     <string name="share_app">Share App</string>
     <string name="receive_notifications">Receive Notifications</string>
     <string name="marked_successfully">Marked\nSuccessfully !</string>
+    <string name="this_may_take_a_few_time_to_get_updated">This may take a few time to get updated</string>
 </resources>

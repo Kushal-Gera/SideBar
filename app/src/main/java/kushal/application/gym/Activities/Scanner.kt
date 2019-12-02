@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -42,6 +43,26 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         )
 
         requestPermissions(arrayOf(Manifest.permission.CAMERA), 101)
+
+
+//        /checking for internet
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        if (!(activeNetworkInfo != null && activeNetworkInfo.isConnected)) {
+            AlertDialog.Builder(this, R.style.AlertDialogCustom)
+                .setTitle("Internet May Not Be Available")
+                .setMessage("Please retry !")
+                .setPositiveButton("Retry") { dialogInterface: DialogInterface, i: Int ->
+                    startActivity(Intent(this, Scanner::class.java))
+                    finish()
+                }
+                .setNegativeButton("Return") { dialogInterface: DialogInterface, i: Int ->
+                    finish()
+                }
+                .setCancelable(false)
+                .create().show()
+        }
+
 
     }
 
@@ -113,23 +134,24 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         FirebaseDatabase.getInstance().reference.child("Users")
             .child(auth!!.uid)
             .push().child("date").setValue(date)
+            .addOnSuccessListener {
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.mark_dialog)
+                dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
 
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.mark_dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
+                dialog.dialog_return.setOnClickListener {
+                    dialog.dismiss()
+                    finish()
+                }
+            }
 
-        dialog.dialog_return.setOnClickListener {
-            dialog.dismiss()
-            finish()
-        }
 
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
-    ) {
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.isNotEmpty()) {

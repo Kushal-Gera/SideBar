@@ -1,12 +1,10 @@
 package kushal.application.gym.Activities
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -16,9 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -54,13 +50,16 @@ class MainActivity : AppCompatActivity() {
 
     val auth = FirebaseAuth.getInstance()
 
+    private val sharedPreferences: SharedPreferences by lazy {
+        getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+    }
+
 
     @SuppressLint("RestrictedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sharedPreferences = getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
 
         if (!sharedPreferences.getBoolean("is_prev", false)) {
             startActivity(Intent(this, DetailsAct::class.java))
@@ -123,22 +122,22 @@ class MainActivity : AppCompatActivity() {
         fManager.beginTransaction().replace(R.id.layout, HomeFrag()).commit()
 
 
-//        Work Requests ************************************************
+//        WorkManager and Work Requests ************************************************
         val workManager = WorkManager.getInstance(this)
+        val constraints =
+            Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 
         //request 1 for remove excess dates
         val request = PeriodicWorkRequest.Builder(
-            RemoveDates::class.java,
-            2, TimeUnit.DAYS
-        ).addTag("RemoveDates").build()
+            RemoveDates::class.java, 2, TimeUnit.DAYS
+        ).setConstraints(constraints).build()
         workManager
             .enqueueUniquePeriodicWork("RemoveDates", ExistingPeriodicWorkPolicy.KEEP, request)
 
         //request 2 for linking dates
         val request2 = PeriodicWorkRequest.Builder(
-            LinkDatabase::class.java, 1,
-            TimeUnit.DAYS
-        ).addTag("LinkDatabase").build()
+            LinkDatabase::class.java, 12, TimeUnit.HOURS, 8, TimeUnit.HOURS
+        ).setConstraints(constraints).build()
         workManager
             .enqueueUniquePeriodicWork("LinkDatabase", ExistingPeriodicWorkPolicy.KEEP, request2)
 
@@ -202,7 +201,8 @@ class MainActivity : AppCompatActivity() {
         }
         contact.setOnClickListener {
             //            onBackPressed()
-            val builder = AlertDialog.Builder(this,
+            val builder = AlertDialog.Builder(
+                this,
                 R.style.AlertDialogGreen
             )
             builder.setTitle("Contact Us Here :")
@@ -223,7 +223,8 @@ class MainActivity : AppCompatActivity() {
         }
         logout.setOnClickListener {
             //            onBackPressed()
-            val builder = AlertDialog.Builder(this,
+            val builder = AlertDialog.Builder(
+                this,
                 R.style.AlertDialogCustom
             )
             builder.setTitle("Do you really want to Logout ?")
@@ -294,5 +295,15 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
 
     }
+
+    @SuppressLint("SetTextI18n")
+    override fun onResume() {
+        super.onResume()
+
+        main_name.text = sharedPreferences.getString(USER_NAME, "User")
+        main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
+
+    }
+
 
 }

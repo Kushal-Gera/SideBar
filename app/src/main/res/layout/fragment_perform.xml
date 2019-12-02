@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,87 +8,74 @@
     android:orientation="vertical"
     tools:context=".Fragments.PerformFrag">
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginBottom="-20dp">-->
-
-<!--        <ProgressBar-->
-<!--            android:id="@+id/perf_progress"-->
-<!--            style="?android:progressBarStyleHorizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="140dp"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:padding="50dp"-->
-<!--            android:progress="80"-->
-<!--            android:progressDrawable="@drawable/progress_bar"-->
-<!--            android:rotation="-90" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/perf_percent"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="00 %"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="28dp"-->
-<!--            tools:ignore="HardcodedText,SpUsage" />-->
-
-<!--    </RelativeLayout>-->
-
-
-    <TextView
-        android:id="@+id/month"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingTop="10dp"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        tools:ignore="RtlSymmetry"
-        tools:text="October 2019" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/perf_loading"
+        <TextView
+            android:id="@+id/month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="October 2019" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/perf_loading"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="-20dp"
+            android:layout_marginTop="-40dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="-70dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/otp"
+            tools:ignore="RtlSymmetry" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="@color/background"
+            app:compactCalendarCurrentDayBackgroundColor="@color/gray"
+            app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/gray"
+            app:compactCalendarEventIndicatorStyle="fill_large_indicator"
+            app:compactCalendarMultiEventIndicatorColor="@color/white"
+            app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="@color/white"
+            app:compactCalendarTextSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginStart="-20dp"
-        android:layout_marginTop="-40dp"
-        android:layout_marginEnd="-20dp"
-        android:layout_marginBottom="-70dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/otp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/this_may_take_a_few_time_to_get_updated"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         tools:ignore="RtlSymmetry" />
 
-    <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="@color/background"
-        app:compactCalendarCurrentDayBackgroundColor="@color/gray"
-        app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
-        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
-        app:compactCalendarMultiEventIndicatorColor="@color/white"
-        app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
-        app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextColor="@color/white"
-        app:compactCalendarTextSize="12sp" />
-
-
-</LinearLayout>
+</RelativeLayout>

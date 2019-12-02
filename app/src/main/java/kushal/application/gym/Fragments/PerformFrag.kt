@@ -1,21 +1,21 @@
 package kushal.application.gym.Fragments
 
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_perform.*
 import kotlinx.android.synthetic.main.fragment_perform.view.*
 import kushal.application.gym.DateDatabase.DateDatabase
 import kushal.application.gym.R
@@ -25,14 +25,6 @@ import java.util.*
 
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class PerformFrag : Fragment() {
-
-    val database by lazy {
-        Room.databaseBuilder(
-            activity!!.applicationContext,
-            DateDatabase::class.java,
-            "dates.db"
-        ).allowMainThreadQueries().build()
-    }
 
     val monthFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
     private val smallDateFormat = SimpleDateFormat("MMM dd yyyy", Locale.getDefault())
@@ -56,6 +48,14 @@ class PerformFrag : Fragment() {
                 view.month.text = monthFormat.format(month)
             }
         })
+
+
+        val database =
+            Room.databaseBuilder(
+                activity!!.applicationContext,
+                DateDatabase::class.java,
+                "dates.db"
+            ).allowMainThreadQueries().build()
 
 
         if (!database.myDAO.readDates().isNullOrEmpty()) {

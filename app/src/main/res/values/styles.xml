@@ -13,7 +13,7 @@
         <item name="android:statusBarColor">@color/background</item>
     </style>
 
-<!--    //this is the main dialog theme-->
+    <!--    //this is the main dialog theme-->
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
 
@@ -25,7 +25,7 @@
         <item name="android:background">@color/toolbar_color</item>
     </style>
 
-<!--    //this is the secondary custom alert dialog theme-->
+    <!--    //this is the secondary custom alert dialog theme-->
     <style name="AlertDialogGreen" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/green_pastel</item>
 
@@ -37,7 +37,7 @@
         <item name="android:background">@color/toolbar_color</item>
     </style>
 
-<!--    //this is the main 'progress bar and progress dialog'    theme-->
+    <!--    //this is the main 'progress bar and progress dialog'    theme-->
     <style name="ProgressDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">#FFF</item>
