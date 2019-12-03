@@ -54,7 +54,7 @@
             app:compactCalendarBackgroundColor="@color/background"
             app:compactCalendarCurrentDayBackgroundColor="@color/gray"
             app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/gray"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
             app:compactCalendarEventIndicatorStyle="fill_large_indicator"
             app:compactCalendarMultiEventIndicatorColor="@color/white"
             app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
@@ -65,6 +65,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -75,7 +76,7 @@
         android:gravity="center"
         android:text="@string/this_may_take_a_few_time_to_get_updated"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="12sp"
         tools:ignore="RtlSymmetry" />
 
 </RelativeLayout>

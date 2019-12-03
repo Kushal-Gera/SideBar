@@ -37,6 +37,10 @@ class DetailsAct : AppCompatActivity() {
                 weight.error = "Required"
                 return@OnClickListener
             }
+            if (TextUtils.isEmpty(height.editText?.text)) {
+                height.error = "Required"
+                return@OnClickListener
+            }
 
             saveData()
 
@@ -69,6 +73,7 @@ class DetailsAct : AppCompatActivity() {
         editor.putString("name", name.editText?.text.toString()).apply()
         editor.putString("age", age.editText?.text.toString()).apply()
         editor.putString("weight", weight.editText?.text.toString()).apply()
+        editor.putString("height", height.editText?.text.toString()).apply()
         if (IS_MALE)
             editor.putString("gender", "male").apply()
         else

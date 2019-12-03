@@ -15,9 +15,9 @@
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:background="@color/backgroundDark"
+        android:visibility="gone"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -36,8 +36,8 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/person"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#2479FF"/>
+                app:civ_border_color="#2479FF"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/main_name"
@@ -162,13 +162,14 @@
                     tools:ignore="UnusedAttribute" />
 
                 <ImageView
+                    android:id="@+id/perf_tv_dot"
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:contentDescription="@string/description"
-                    android:src="@drawable/green_dot"
+                    android:src="@drawable/yellow_dot"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -204,7 +205,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:contentDescription="@string/description"
-                    android:src="@drawable/red_dot" />
+                    android:src="@drawable/yellow_dot"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

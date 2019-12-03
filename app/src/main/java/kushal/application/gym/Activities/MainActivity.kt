@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         if (sharedPreferences.getBoolean(CAM_START, false)) {
             Handler().postDelayed({
                 fab.performClick()
-            }, 400)
+            }, 300)
         }
 
 
@@ -241,6 +241,10 @@ class MainActivity : AppCompatActivity() {
             builder.create().show()
         }
 
+
+        //check for notification dots
+        if (sharedPreferences.getBoolean("perf_tv_dot", false))
+            perf_tv_dot.visibility = View.VISIBLE
     }
 
     private fun colorToWhite(view: View) {
@@ -302,7 +306,6 @@ class MainActivity : AppCompatActivity() {
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
-
     }
 
 

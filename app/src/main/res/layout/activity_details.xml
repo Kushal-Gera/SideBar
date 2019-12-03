@@ -31,9 +31,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
@@ -73,8 +73,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
@@ -114,8 +114,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
@@ -130,25 +130,55 @@
             android:padding="6dp"
             android:src="@drawable/weight" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/weight"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColorHint="@color/hint_color">
+            android:layout_height="match_parent"
+            android:baselineAligned="true"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/weight"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:hint="@string/enter_your_weight"
-                android:inputType="number"
-                android:paddingStart="10dp"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                tools:ignore="RtlSymmetry,SpUsage" />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textColorHint="@color/hint_color">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:hint="@string/enter_your_weight"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    tools:ignore="RtlSymmetry,SpUsage" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/height"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textColorHint="@color/hint_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:hint="@string/height"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    tools:ignore="RtlSymmetry,SpUsage" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

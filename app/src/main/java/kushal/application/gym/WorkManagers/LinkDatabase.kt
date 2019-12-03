@@ -11,10 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kushal.application.gym.Activities.MainActivity
+import kushal.application.gym.Activities.SHARED_PREF
 import kushal.application.gym.DateDatabase.DateData
 import kushal.application.gym.DateDatabase.DateDatabase
-import kushal.application.gym.Fragments.PerformFrag
 
 class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
@@ -23,7 +22,8 @@ class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
         Room.databaseBuilder(
             context.applicationContext,
             DateDatabase::class.java,
-            "dates.db").allowMainThreadQueries().build()
+            "dates.db"
+        ).allowMainThreadQueries().build()
     }
 
     private val auth = FirebaseAuth.getInstance().currentUser
@@ -54,6 +54,8 @@ class LinkDatabase(val context: Context, workerParams: WorkerParameters) :
 
                             database.myDAO.insertDate(dateData)
                         }
+                        context.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE).edit()
+                            .putBoolean("perf_tv_dot", true).apply()
                     }
                 }
 

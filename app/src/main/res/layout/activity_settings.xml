@@ -99,10 +99,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
+                android:text="Users"
                 android:textColor="#FFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:text="Kushal Gera" />
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/setting_age"
@@ -111,7 +112,7 @@
                 android:gravity="center"
                 android:textColor="#FFF"
                 android:textSize="24sp"
-                tools:text="25 yrs" />
+                tools:text="28 yrs" />
 
         </LinearLayout>
 
