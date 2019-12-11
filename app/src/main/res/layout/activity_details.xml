@@ -224,7 +224,7 @@
             android:background="@drawable/save_now_bg_2"
             android:gravity="center"
             android:text="@string/female"
-            android:textColor="@color/white"
+            android:textColor="#CCC"
             android:textSize="19dp"
             tools:ignore="SpUsage" />
 

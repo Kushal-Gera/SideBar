@@ -6,23 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.room.Room
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_perform.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_perform.view.*
+import kushal.application.gym.Activities.MainActivity
+import kushal.application.gym.Activities.SHARED_PREF
 import kushal.application.gym.DateDatabase.DateDatabase
 import kushal.application.gym.R
-import kushal.application.gym.WorkManagers.LinkDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -76,9 +69,13 @@ class PerformFrag : Fragment() {
 
         /**
          * //change this to false
-        */
-        context!!.getSharedPreferences("shared_pref", Context.MODE_PRIVATE).edit()
-            .putBoolean("perf_tv_dot", true).apply()
+         * currently already false!! hahah
+         */
+        context!!.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE).edit()
+            .putBoolean("perf_tv_dot", false).apply()
+        activity!!.perf_tv_dot.visibility = View.GONE
+
+
 
         return view
     }

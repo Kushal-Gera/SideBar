@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.work.*
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private var IS_SHORT = false
     private var ON_HOME = true
     private val number = 8588910153
+    var liveData: MutableLiveData<Boolean> = MutableLiveData()
+//    lateinit var liveData: MutableLiveData<Boolean>
 
     val fManager by lazy {
         supportFragmentManager
@@ -69,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                 fab.performClick()
             }, 300)
         }
-
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
@@ -242,9 +244,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //check for notification dots
         if (sharedPreferences.getBoolean("perf_tv_dot", false))
             perf_tv_dot.visibility = View.VISIBLE
+        else
+            perf_tv_dot.visibility = View.GONE
+
     }
 
     private fun colorToWhite(view: View) {
@@ -306,6 +310,7 @@ class MainActivity : AppCompatActivity() {
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
+
     }
 
 

@@ -43,6 +43,6 @@
     <string name="fats">Fats</string>
     <string name="carbohydrates">Carbohydrates</string>
     <string name="remember_your_macros">Remember Your Macros</string>
-    <string name="macro_division">Below is the division of Macro - Nutrients (macros) in a Balanced Diet with Plenty Of Water !!</string>
+    <string name="macro_division">Below is the division of Macro - Nutrients (macros) based on your Height and weight; off course along with Plenty of Water !!</string>
     <string name="height">Height (cm) *</string>
 </resources>

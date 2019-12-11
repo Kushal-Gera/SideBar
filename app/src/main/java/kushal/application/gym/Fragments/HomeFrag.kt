@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -49,19 +48,19 @@ class HomeFrag : Fragment() {
         }
 
 
-        val indicator = arrayListOf<ImageView>()
         val list = arrayOf(
             R.drawable.bg_blue,
-            R.drawable.green_dot,
+            R.drawable.bg_green,
+            R.drawable.bg_yellow,
             R.drawable.bg_blue,
-            R.drawable.yellow_dot,
-            R.drawable.green_dot
+            R.drawable.bg_green
         )
 
         view.home_recView.adapter = Home_adapter(list)
         val llm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         view.home_recView.layoutManager = llm
         view.home_recView.addItemDecoration(CirclePagerIndicatorDecoration())
+
 
 
 

@@ -52,14 +52,14 @@ class DetailsAct : AppCompatActivity() {
             male?.background = resources.getDrawable(R.drawable.save_now_bg_2)
             IS_MALE = false
             female.setTextColor(Color.WHITE)
-            male?.setTextColor(Color.WHITE)
+            male?.setTextColor(Color.LTGRAY)
         }
         male.setOnClickListener {
             male?.background = resources.getDrawable(R.drawable.save_now_bg)
             female.background = resources.getDrawable(R.drawable.save_now_bg_2)
             IS_MALE = true
             male?.setTextColor(Color.WHITE)
-            female.setTextColor(Color.WHITE)
+            female.setTextColor(Color.LTGRAY)
         }
 
     }
@@ -84,7 +84,8 @@ class DetailsAct : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val user = hashMapOf(
             "name" to shared_pref!!.getString(
-                USER_NAME, "u" + System.currentTimeMillis()).toString(),
+                USER_NAME, "u" + System.currentTimeMillis()
+            ).toString(),
             "number" to auth!!.phoneNumber.toString()
         )
 
@@ -103,5 +104,6 @@ class DetailsAct : AppCompatActivity() {
         if (intent.getBooleanExtra("allowed_back", false))
             super.onBackPressed()
     }
+
 
 }
