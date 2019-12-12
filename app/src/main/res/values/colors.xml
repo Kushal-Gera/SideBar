@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFF</color>
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#2196F3</color>
-<!--    <color name="mtrl_textinput_default_box_stroke_color">#DDD</color>-->
 
-    <color name="background">#262A32</color>
-    <color name="backgroundDark">#1d2026</color>
-    <color name="toolbar_color">#373f4f</color>
+<!--    <color name="colorPrimary">#FFF</color>-->
+<!--    <color name="colorPrimaryDark">#000</color>-->
+<!--    <color name="colorAccent">#2196F3</color>-->
+<!--&lt;!&ndash;    <color name="mtrl_textinput_default_box_stroke_color">#DDD</color>&ndash;&gt;-->
 
-    <color name="white">#FFF</color>
-    <color name="black">#000</color>
+<!--    <color name="background">#262A32</color>-->
+<!--    <color name="backgroundDark">#1d2026</color>-->
+<!--    <color name="toolbar_color">#373f4f</color>-->
 
-    <color name="hint_color">#CCC</color>
-    <color name="gray">#9A9A9A</color>
+<!--    <color name="white">#FFF</color>-->
+<!--    <color name="black">#000</color>-->
+
+<!--    <color name="hint_color">#CCC</color>-->
+<!--    <color name="gray">#9A9A9A</color>-->
 
     <color name="green_pastel">#00CE98</color>
     <color name="red_pastel">#EF5350</color>
     <color name="yellow_pastel">#FFA726</color>
+
+
+
+<!--    Light color theme-->
+
+    <color name="gray">#D9D9D9</color>
+    <color name="hint_color">#9A9A9A</color>
+
+    <color name="colorPrimary">#FFF</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#0277BD</color>
+    <!--    <color name="mtrl_textinput_default_box_stroke_color">#DDD</color>-->
+
+    <color name="background">#F5F5F5</color>
+    <color name="backgroundDark">#0277BD</color>
+    <color name="toolbar_color">#2999f2</color>
+
+    <color name="white">#000</color>
+    <color name="black">#FFF</color>
 
 
 </resources>

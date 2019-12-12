@@ -1,7 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application light theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="primaryColor">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#CDCDCD</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">@color/background</item>
+    </style>
+
+
+<!--     Base application Dark theme.-->
+    <style name="AppDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,6 +26,8 @@
 
         <item name="android:statusBarColor">@color/background</item>
     </style>
+
+
 
     <!--    //this is the main dialog theme-->
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">

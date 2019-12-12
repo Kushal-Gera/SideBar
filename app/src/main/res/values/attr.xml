@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="customLight">
+
+        <attr name="primaryColor" format="color"/>
+        <attr name="primaryColorDark" format="color"/>
+        <attr name="accentColor" format="color"/>
+
+        <attr name="backgroundColor" format="color"/>
+        <attr name="backgroundColorDark" format="color"/>
+
+        <attr name="textPrimary" format="color"/>
+        <attr name="textSecondary" format="color"/>
+
+        <attr name="menuNotSelect" format="color"/>
+
+        <attr name="hint_color" format="color"/>
+
+        <attr name="light" format="color"/>
+        <attr name="dark" format="color"/>
+
+        <attr name="division" format="color"/>
+
+
+    </declare-styleable>
+    
+</resources>

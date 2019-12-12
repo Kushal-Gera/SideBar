@@ -28,6 +28,7 @@ class HomeFrag : Fragment() {
         view.desc.animate().translationY(-30f)
         view.desc.visibility = View.GONE
 
+        
         view.drop_down.setOnClickListener {
             if (IS_DOWN) {
                 view.desc.animate().alpha(1f).translationY(0f).duration = 400
