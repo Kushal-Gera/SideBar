@@ -9,18 +9,23 @@
 
         <attr name="backgroundColor" format="color"/>
         <attr name="backgroundColorDark" format="color"/>
+        <attr name="toolbarColor" format="color"/>
 
         <attr name="textPrimary" format="color"/>
         <attr name="textSecondary" format="color"/>
 
         <attr name="menuNotSelect" format="color"/>
 
-        <attr name="hint_color" format="color"/>
+        <attr name="hintColor" format="color"/>
 
         <attr name="light" format="color"/>
         <attr name="dark" format="color"/>
 
         <attr name="division" format="color"/>
+
+        <attr name="dialogBG" format="color"/>
+        <attr name="accentDialog" format="color"/>
+        <attr name="accentDialogGreen" format="color"/>
 
 
     </declare-styleable>

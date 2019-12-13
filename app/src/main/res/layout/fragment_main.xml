@@ -59,7 +59,7 @@
                 android:layout_marginBottom="5dp"
                 android:drawableEnd="@drawable/down"
                 android:text="@string/remember_your_macros"
-                android:textColor="@color/white"
+                android:textColor="?attr/textPrimary"
                 android:textSize="16sp" />
 
             <TextView
@@ -100,7 +100,7 @@
                         android:drawableTint="@color/colorAccent"
                         android:gravity="center"
                         android:text="@string/carbohydrates"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/textPrimary"
                         tools:ignore="UnusedAttribute" />
 
                     <ProgressBar
@@ -126,7 +126,7 @@
                         android:drawableTint="@color/yellow_pastel"
                         android:gravity="center"
                         android:text="@string/fats"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/textPrimary"
                         tools:ignore="UnusedAttribute" />
 
                     <ProgressBar
@@ -153,7 +153,7 @@
                         android:drawableTint="@color/red_pastel"
                         android:gravity="center"
                         android:text="@string/proteins"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/textPrimary"
                         tools:targetApi="m" />
 
                     <ProgressBar

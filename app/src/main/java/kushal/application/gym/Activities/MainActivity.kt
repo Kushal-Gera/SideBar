@@ -5,16 +5,18 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.AttrRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.work.*
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -36,8 +38,6 @@ class MainActivity : AppCompatActivity() {
     private var IS_SHORT = false
     private var ON_HOME = true
     private val number = 8588910153
-    var liveData: MutableLiveData<Boolean> = MutableLiveData()
-//    lateinit var liveData: MutableLiveData<Boolean>
 
     val fManager by lazy {
         supportFragmentManager
@@ -57,10 +57,30 @@ class MainActivity : AppCompatActivity() {
         getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
     }
 
+    private val myColorStateList by lazy {
+
+        ColorStateList(
+            arrayOf(
+                intArrayOf(
+                    android.R.attr.state_pressed,
+                    android.R.attr.state_focused,
+                    android.R.attr.state_focused
+                    ,
+                    android.R.attr.clickable
+                )
+            ),
+            intArrayOf(getColorFromAttr(R.attr.hintColor))
+        )
+    }
+
 
     @SuppressLint("RestrictedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.getBoolean(IS_THEME_DARK, true))
+            setTheme(R.style.MyDarkTheme)
+        else
+            setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_main)
 
 
@@ -97,8 +117,8 @@ class MainActivity : AppCompatActivity() {
                 .scaleY(0.6f)
                 .duration = 1000
 
-            window.statusBarColor = resources.getColor(R.color.backgroundDark)
-            container.setBackgroundColor(resources.getColor(R.color.backgroundDark))
+            window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
+            container.setBackgroundColor(getColorFromAttr(R.attr.backgroundColorDark))
 
             drawer.visibility = View.INVISIBLE
             IS_SHORT = true
@@ -266,13 +286,13 @@ class MainActivity : AppCompatActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             menuItemList.forEach {
-                it.compoundDrawableTintList =
-                    resources.getColorStateList(R.color.gray)
 
-                it.setTextColor(resources.getColor(R.color.gray))
+                it.compoundDrawableTintList =
+                    ColorStateList.valueOf(getColorFromAttr(R.attr.textSecondary))
+
+                it.setTextColor(getColorFromAttr(R.attr.textSecondary))
             }
         }
-
 
     }
 
@@ -288,8 +308,8 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed({
                 drawer.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
-                window.statusBarColor = resources.getColor(R.color.background)
-                container.setBackgroundColor(resources.getColor(R.color.background))
+                window.statusBarColor = getColorFromAttr(R.attr.backgroundColor)
+                container.setBackgroundColor(getColorFromAttr(R.attr.backgroundColor))
             }, 600)
 
             IS_SHORT = !IS_SHORT
@@ -311,6 +331,15 @@ class MainActivity : AppCompatActivity() {
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
 
+    }
+
+    fun getColorFromAttr(
+        @AttrRes attrColor: Int,
+        typedValue: TypedValue = TypedValue(),
+        resolveRefs: Boolean = true
+    ): Int {
+        theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+        return typedValue.data
     }
 
 

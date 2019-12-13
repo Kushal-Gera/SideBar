@@ -2,66 +2,93 @@
 
     <!-- Base application light theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="primaryColor">@color/colorPrimaryDark</item>
+        <item name="primaryColorDark">@color/colorPrimary</item>
+        <item name="accentColor">#01579B</item>
+
+        <item name="backgroundColor">#F5F5F5</item>
+        <item name="backgroundColorDark">#01579B</item>
+        <item name="toolbarColor">#2999f2</item>
+
+        <item name="textPrimary">@color/black</item>
+        <item name="textSecondary">#D0D0D0</item>
+
+        <item name="hintColor">#9A9A9A</item>
+
+        <item name="colorControlNormal">#CDCDCD</item>
+        <item name="colorControlActivated">#2999f2</item>
+
+        <item name="android:statusBarColor">#F5F5F5</item>
+        <item name="dialogBG">#01579B</item>
+        <item name="accentDialog">@color/yellow_pastel</item>
+        <item name="accentDialogGreen">@color/yellow_pastel</item>
+
+        <item name="division">#CCC</item>
+
+    </style>
+
+    <!--     Base application Dark theme.-->
+    <style name="MyDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="primaryColor">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="primaryColorDark">@color/colorPrimaryDark</item>
+        <item name="accentColor">@color/colorAccent</item>
+
+        <item name="backgroundColor">@color/background</item>
+        <item name="backgroundColorDark">@color/backgroundDark</item>
+        <item name="toolbarColor">@color/toolbar_color</item>
+
+        <item name="textPrimary">@color/white</item>
+        <item name="textSecondary">@color/gray</item>
+
+        <item name="hintColor">@color/hint_color</item>
 
         <item name="colorControlNormal">#CDCDCD</item>
         <item name="colorControlActivated">@color/colorAccent</item>
 
         <item name="android:statusBarColor">@color/background</item>
+        <item name="dialogBG">@color/toolbar_color</item>
+        <item name="accentDialog">@color/colorAccent</item>
+        <item name="accentDialogGreen">@color/yellow_pastel</item>
+
+        <item name="division">#444</item>
+
     </style>
-
-
-<!--     Base application Dark theme.-->
-    <style name="AppDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="colorControlNormal">#CDCDCD</item>
-        <item name="colorControlActivated">@color/colorAccent</item>
-
-        <item name="android:statusBarColor">@color/background</item>
-    </style>
-
 
 
     <!--    //this is the main dialog theme-->
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">?attr/accentDialog</item>
 
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">#CCC</item>
 
         <item name="dialogCornerRadius">15dp</item>
 
-        <item name="android:background">@color/toolbar_color</item>
+        <item name="android:background">?attr/dialogBG</item>
     </style>
 
     <!--    //this is the secondary custom alert dialog theme-->
     <style name="AlertDialogGreen" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/green_pastel</item>
+        <item name="colorAccent">?attr/accentDialogGreen</item>
 
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">#CCC</item>
 
         <item name="dialogCornerRadius">15dp</item>
 
-        <item name="android:background">@color/toolbar_color</item>
+        <item name="android:background">?attr/dialogBG</item>
     </style>
 
     <!--    //this is the main 'progress bar and progress dialog'    theme-->
     <style name="ProgressDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">#FFF</item>
+        <item name="colorAccent">?attr/accentDialog</item>
+        <item name="android:textColor">@color/white</item>
 
         <item name="dialogCornerRadius">15dp</item>
 
-        <item name="android:background">@color/toolbar_color</item>
+        <item name="android:background">?attr/dialogBG</item>
     </style>
-
 
 </resources>

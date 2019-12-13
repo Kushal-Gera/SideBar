@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/bg_main"
     android:orientation="vertical"
     tools:context=".Fragments.PerformFrag">
 
@@ -24,7 +24,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:paddingTop="10dp"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="24sp"
             tools:ignore="RtlSymmetry"
             tools:text="October 2019" />
@@ -51,15 +51,15 @@
             android:layout_marginEnd="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            app:compactCalendarBackgroundColor="@color/background"
-            app:compactCalendarCurrentDayBackgroundColor="@color/gray"
+            app:compactCalendarBackgroundColor="?attr/backgroundColor"
+            app:compactCalendarCurrentDayBackgroundColor="?attr/hintColor"
             app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
             app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
             app:compactCalendarEventIndicatorStyle="fill_large_indicator"
             app:compactCalendarMultiEventIndicatorColor="@color/white"
             app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
             app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextColor="@color/white"
+            app:compactCalendarTextColor="?attr/textPrimary"
             app:compactCalendarTextSize="12sp" />
 
     </LinearLayout>
@@ -75,7 +75,7 @@
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:text="@string/this_may_take_a_few_time_to_get_updated"
-        android:textColor="@color/white"
+        android:textColor="?attr/textPrimary"
         android:textSize="12sp"
         tools:ignore="RtlSymmetry" />
 

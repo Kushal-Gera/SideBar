@@ -45,4 +45,5 @@
     <string name="remember_your_macros">Remember Your Macros</string>
     <string name="macro_division">Below is the division of Macro - Nutrients (macros) based on your Height and weight; off course along with Plenty of Water !!</string>
     <string name="height">Height (cm) *</string>
+    <string name="dark_mode_enabled">Dark Mode Enabled</string>
 </resources>

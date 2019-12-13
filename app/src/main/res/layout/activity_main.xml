@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     tools:context=".Activities.MainActivity">
 
     <!--    menu files are here-->
@@ -14,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:background="@color/backgroundDark"
+        android:background="?attr/backgroundColorDark"
+        android:visibility="gone"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -36,7 +36,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/person"
-                app:civ_border_color="#2479FF"
+                app:civ_border_color="?attr/toolbarColor"
                 app:civ_border_width="2dp" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 tools:text="Kushal Gera" />
 
@@ -121,7 +121,7 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/cost"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="?attr/textSecondary"
                     android:text="@string/memberships"
                     android:textColor="@color/gray"
                     android:textSize="20sp"
@@ -156,7 +156,7 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/perf"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="?attr/textSecondary"
                     android:gravity="center"
                     android:text="@string/performance"
                     android:textColor="@color/gray"
@@ -194,7 +194,7 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/exercise"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="?attr/textSecondary"
                     android:text="@string/exercises"
                     android:textColor="@color/gray"
                     android:textSize="20sp"
@@ -229,7 +229,7 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/diet"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="?attr/textSecondary"
                     android:text="@string/diet_guide"
                     android:textColor="@color/gray"
                     android:textSize="20sp"
@@ -264,7 +264,7 @@
                     android:layout_marginStart="5dp"
                     android:drawableStart="@drawable/gallery"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="?attr/textSecondary"
                     android:text="@string/gallery"
                     android:textColor="@color/gray"
                     android:textSize="20sp"

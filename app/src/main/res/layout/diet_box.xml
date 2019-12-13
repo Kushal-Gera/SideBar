@@ -30,14 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/toolbar_color"
+            android:background="?attr/toolbarColor"
             android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textColor="@color/white"
             android:textSize="24sp"
             tools:text="Weight Loss" />
-
 
     </LinearLayout>
 

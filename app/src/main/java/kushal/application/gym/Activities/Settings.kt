@@ -7,21 +7,23 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
 import android.webkit.MimeTypeMap
-import android.widget.FrameLayout
 import android.widget.Switch
 import android.widget.Toast
+import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_settings.*
+import kushal.application.custombar.CustomBar
 import kushal.application.gym.R
 
 
 val CAM_START = "is_on"
 val NOTI_RECEIVE = "noti"
+val IS_THEME_DARK = "theme"
 
 @Suppress("DEPRECATION")
 class Settings : AppCompatActivity() {
@@ -34,12 +36,16 @@ class Settings : AppCompatActivity() {
         applicationContext.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
     }
 
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.getBoolean(IS_THEME_DARK, true))
+            setTheme(R.style.MyDarkTheme)
+        else
+            setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_settings)
-        window.statusBarColor = resources.getColor(R.color.backgroundDark)
+        window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
+
 
         setting_name.text = sharedPreferences.getString(USER_NAME, "User")
         setting_age.text = sharedPreferences.getString(USER_AGE, "22") + " yrs"
@@ -49,6 +55,9 @@ class Settings : AppCompatActivity() {
 
         var TURN_NOTI_ON = sharedPreferences.getBoolean(NOTI_RECEIVE, true)
         setting_noti_switch.isChecked = TURN_NOTI_ON
+
+        var DARK_THEME_ON = sharedPreferences.getBoolean(IS_THEME_DARK, true)
+        theme_switch.isChecked = DARK_THEME_ON
 
 
         val dp = sharedPreferences.getString("dp", "none")
@@ -60,27 +69,22 @@ class Settings : AppCompatActivity() {
             onBackPressed()
         }
         setting_dev.setOnClickListener {
-            val sBar =
-                Snackbar.make(it, "Developed by Kushal Gera :", Snackbar.LENGTH_LONG)
-            sBar.setAction("Git Hub") {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kushal-Gera"))
-                )
+            CustomBar(it, "Developed by Kushal Gera :", CustomBar.LENGTH_LONG).run {
+
+                actionTextColor(R.color.yellow_pastel)
+                actionText("Git Hub", View.OnClickListener {
+                    startActivity(
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kushal-Gera"))
+                    )
+                }, false)
+
+                setBackground(R.drawable.bg_toolbar)
+
+                setMargins(15, 0, 15, 30)
+
+                show()
+
             }
-                .setActionTextColor(resources.getColor(R.color.yellow_pastel))
-
-            val params = sBar.view.layoutParams as FrameLayout.LayoutParams
-            params.setMargins(
-                params.leftMargin + 20,
-                params.topMargin,
-                params.rightMargin + 20,
-                params.bottomMargin + 30
-            )
-
-            sBar.view.layoutParams = params
-            sBar.view.background = resources.getDrawable(R.drawable.bg_toolbar)
-
-            sBar.show()
         }
         setting_share.setOnClickListener { shareIT() }
         setting_rate.setOnClickListener { rateUs() }
@@ -117,6 +121,17 @@ class Settings : AppCompatActivity() {
             i.action = Intent.ACTION_GET_CONTENT
 
             startActivityForResult(Intent.createChooser(i, "Choose from :"), 1)
+        }
+        theme_switch.setOnClickListener {
+            val view = it as Switch
+            DARK_THEME_ON = !DARK_THEME_ON
+            view.isChecked = DARK_THEME_ON
+            sharedPreferences.edit().putBoolean(IS_THEME_DARK, DARK_THEME_ON).apply()
+
+            val intent = Intent(this, LoginAct::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
         }
 
 
@@ -191,6 +206,15 @@ class Settings : AppCompatActivity() {
 
         return mimeType.getMimeTypeFromExtension(resolver.getType(uri)).toString()
 
+    }
+
+    fun getColorFromAttr(
+        @AttrRes attrColor: Int,
+        typedValue: TypedValue = TypedValue(),
+        resolveRefs: Boolean = true
+    ): Int {
+        theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+        return typedValue.data
     }
 
 

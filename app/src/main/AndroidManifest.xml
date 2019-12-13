@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.Scanner"
+        <activity
+            android:name=".Activities.Scanner"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Activities.DetailsAct"

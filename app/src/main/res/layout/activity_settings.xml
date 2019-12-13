@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundDark"
+    android:background="?attr/backgroundColorDark"
     android:orientation="vertical"
     android:overScrollMode="never"
     tools:context=".Activities.Settings">
@@ -42,7 +42,7 @@
                     android:layout_weight="8"
                     android:gravity="center"
                     android:text="@string/settings"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <ImageView
@@ -79,7 +79,7 @@
                     android:layout_alignParentBottom="true"
                     android:padding="5dp"
                     android:src="@drawable/person"
-                    app:civ_border_color="#2479FF"
+                    app:civ_border_color="?attr/toolbarColor"
                     app:civ_border_width="2dp" />
 
                 <ImageView
@@ -100,7 +100,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Users"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 tools:text="28 yrs" />
 
@@ -135,7 +135,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <Switch
             android:id="@+id/setting_switch"
@@ -160,7 +160,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <Switch
             android:id="@+id/setting_noti_switch"
@@ -185,7 +185,32 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
+
+        <Switch
+            android:id="@+id/theme_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="true"
+            android:paddingStart="15dp"
+            android:paddingTop="19dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="1dp"
+            android:text="@string/dark_mode_enabled"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:thumb="@drawable/circle"
+            android:track="@drawable/track_selector" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/division" />
 
         <TextView
             android:id="@+id/setting_dev"
@@ -206,7 +231,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <TextView
             android:id="@+id/setting_share"
@@ -227,7 +252,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <TextView
             android:id="@+id/setting_rate"
@@ -248,7 +273,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <TextView
             android:id="@+id/setting_suggestions"
@@ -269,7 +294,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:background="#444" />
+            android:background="?attr/division" />
 
         <TextView
             android:layout_width="180dp"
