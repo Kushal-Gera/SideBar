@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 internal class CirclePagerIndicatorDecoration : RecyclerView.ItemDecoration() {
 
-    public val colorActive = 0xFFFFFFFF
-    public val colorInactive = 0x66FFFFFF
+    val colorActive = 0xFF29B6F6
+    val colorInactive = 0xFF9A9A9A
+
     /**
      * Height of the space the indicator takes up at the bottom of the view.
      */
@@ -79,7 +80,7 @@ internal class CirclePagerIndicatorDecoration : RecyclerView.ItemDecoration() {
         indicatorPosY: Float,
         itemCount: Int
     ) {
-        mPaint.color = colorInactive
+        mPaint.color = colorInactive.toInt()
         // width of item indicator including padding
         val itemWidth = mIndicatorItemLength + mIndicatorItemPadding
         var start = indicatorStartX
@@ -149,4 +150,5 @@ internal class CirclePagerIndicatorDecoration : RecyclerView.ItemDecoration() {
         mPaint.style = Paint.Style.STROKE
         mPaint.isAntiAlias = true
     }
+
 }

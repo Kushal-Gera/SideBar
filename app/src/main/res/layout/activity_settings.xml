@@ -163,16 +163,16 @@
             android:background="?attr/division" />
 
         <Switch
-            android:id="@+id/setting_noti_switch"
+            android:id="@+id/clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:checked="true"
+            android:checked="false"
             android:paddingStart="15dp"
             android:paddingTop="19dp"
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
-            android:text="@string/receive_notifications"
+            android:text="@string/clear_data_on_logout"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:thumb="@drawable/circle"
@@ -198,6 +198,31 @@
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
             android:text="@string/dark_mode_enabled"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:thumb="@drawable/circle"
+            android:track="@drawable/track_selector" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/division" />
+
+        <Switch
+            android:id="@+id/setting_noti_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="true"
+            android:paddingStart="15dp"
+            android:paddingTop="19dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="1dp"
+            android:text="@string/receive_notifications"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:thumb="@drawable/circle"

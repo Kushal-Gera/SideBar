@@ -68,13 +68,12 @@ class LoginAct : AppCompatActivity() {
             val credential = PhoneAuthProvider.getCredential(VERIFICATION_ID, userCode!!)
             signInWith(credential)
         } catch (e: Exception) {
-            Toast.makeText(this, "Please Try Again\nOTP Might be Incorrect", Toast.LENGTH_LONG)
+            Toast.makeText(this, "Please Try Again\n${e.message}", Toast.LENGTH_LONG)
                 .show()
             startActivity(Intent(this, LoginAct::class.java))
             finish()
             e.printStackTrace()
         }
-
     }
 
     private fun signInWith(credential: PhoneAuthCredential) {

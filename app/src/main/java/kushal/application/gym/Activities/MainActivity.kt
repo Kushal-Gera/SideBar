@@ -17,11 +17,13 @@ import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import androidx.work.*
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
+import kushal.application.gym.DateDatabase.DateDatabase
 import kushal.application.gym.Fragments.*
 import kushal.application.gym.R
 import kushal.application.gym.WorkManagers.LinkDatabase
@@ -56,23 +58,6 @@ class MainActivity : AppCompatActivity() {
     private val sharedPreferences: SharedPreferences by lazy {
         getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
     }
-
-    private val myColorStateList by lazy {
-
-        ColorStateList(
-            arrayOf(
-                intArrayOf(
-                    android.R.attr.state_pressed,
-                    android.R.attr.state_focused,
-                    android.R.attr.state_focused
-                    ,
-                    android.R.attr.clickable
-                )
-            ),
-            intArrayOf(getColorFromAttr(R.attr.hintColor))
-        )
-    }
-
 
     @SuppressLint("RestrictedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -252,10 +237,14 @@ class MainActivity : AppCompatActivity() {
             builder.setTitle("Do you really want to Logout ?")
                 .setMessage("Don't worry! All progress will be saved")
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
-                    Toast.makeText(this, "Logging Out...", Toast.LENGTH_SHORT).show()
-                    auth.signOut()
-                    startActivity(Intent(this, LoginAct::class.java))
-                    finish()
+//                    Toast.makeText(this, "Logging Out...", Toast.LENGTH_SHORT).show()
+//                    if (sharedPreferences.getBoolean(CLEAR_ALLOWED, false)) {
+//                        sharedPreferences.edit().clear().apply()
+//                        deleteSQL()
+//                    }
+//                    auth.signOut()
+//                    startActivity(Intent(this, LoginAct::class.java))
+//                    finish()
                 }
                 .setNegativeButton("No") { dialogInterface, i ->
                     //do nothing
@@ -340,6 +329,18 @@ class MainActivity : AppCompatActivity() {
     ): Int {
         theme.resolveAttribute(attrColor, typedValue, resolveRefs)
         return typedValue.data
+    }
+
+    private fun deleteSQL() {
+
+        val database =
+            Room.databaseBuilder(
+                this,
+                DateDatabase::class.java,
+                "dates.db"
+            ).allowMainThreadQueries().build()
+
+        database.myDAO.deleteDate()
     }
 
 

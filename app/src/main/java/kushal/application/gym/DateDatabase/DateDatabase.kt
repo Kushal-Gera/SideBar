@@ -7,6 +7,6 @@ import androidx.room.RoomDatabase
 @Database(entities = [DateData::class], version = 1)
 abstract class DateDatabase : RoomDatabase() {
 
-    public abstract val myDAO : MyDAO
+    abstract val myDAO : MyDAO
 
 }

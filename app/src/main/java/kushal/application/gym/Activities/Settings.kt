@@ -24,6 +24,7 @@ import kushal.application.gym.R
 val CAM_START = "is_on"
 val NOTI_RECEIVE = "noti"
 val IS_THEME_DARK = "theme"
+val CLEAR_ALLOWED = "clear"
 
 @Suppress("DEPRECATION")
 class Settings : AppCompatActivity() {
@@ -58,6 +59,9 @@ class Settings : AppCompatActivity() {
 
         var DARK_THEME_ON = sharedPreferences.getBoolean(IS_THEME_DARK, true)
         theme_switch.isChecked = DARK_THEME_ON
+
+        var clearData = sharedPreferences.getBoolean(CLEAR_ALLOWED, false)
+        clear.isChecked = clearData
 
 
         val dp = sharedPreferences.getString("dp", "none")
@@ -132,6 +136,12 @@ class Settings : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()
+        }
+        clear.setOnClickListener {
+            val view = it as Switch
+            clearData = !clearData
+            view.isChecked = clearData
+            sharedPreferences.edit().putBoolean(CLEAR_ALLOWED, clearData).apply()
         }
 
 
