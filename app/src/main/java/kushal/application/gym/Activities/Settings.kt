@@ -75,12 +75,14 @@ class Settings : AppCompatActivity() {
         setting_dev.setOnClickListener {
             CustomBar(it, "Developed by Kushal Gera :", CustomBar.LENGTH_LONG).run {
 
-                actionTextColor(R.color.yellow_pastel)
+                setTextSize(16f)
+
+                actionTextColor(R.color.yellow_pastel2)
                 actionText("Git Hub", View.OnClickListener {
                     startActivity(
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kushal-Gera"))
                     )
-                }, false)
+                }, false,16f)
 
                 setBackground(R.drawable.bg_toolbar)
 

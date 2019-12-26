@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
     }
 
-    @SuppressLint("RestrictedApi", "SetTextI18n")
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (sharedPreferences.getBoolean(IS_THEME_DARK, true))
@@ -214,7 +214,7 @@ class MainActivity : AppCompatActivity() {
             )
             builder.setTitle("Contact Us Here :")
                 .setMessage("D-2 FF, Moti Nagar, New Delhi\n+91 $number")
-                .setPositiveButton("WhatsApp") { dialogInterface: DialogInterface, pos: Int ->
+                .setPositiveButton("WhatsApp") { dialog: DialogInterface, pos: Int ->
                     //whatsApp
                     val i = Intent(Intent.ACTION_VIEW)
                     i.data = Uri.parse("https://wa.me/+91$number")
@@ -237,7 +237,7 @@ class MainActivity : AppCompatActivity() {
             builder.setTitle("Do you really want to Logout ?")
                 .setMessage("Don't worry! All progress will be saved")
                 .setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
-//                    Toast.makeText(this, "Logging Out...", Toast.LENGTH_SHORT).show()
+                    //                    Toast.makeText(this, "Logging Out...", Toast.LENGTH_SHORT).show()
 //                    if (sharedPreferences.getBoolean(CLEAR_ALLOWED, false)) {
 //                        sharedPreferences.edit().clear().apply()
 //                        deleteSQL()
@@ -285,7 +285,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("RestrictedApi")
     override fun onBackPressed() {
         if (IS_SHORT) {
             layout.animate().translationX(0f)
@@ -319,7 +318,6 @@ class MainActivity : AppCompatActivity() {
 
         main_name.text = sharedPreferences.getString(USER_NAME, "User")
         main_age.text = sharedPreferences.getString(USER_AGE, "25") + " yrs"
-
     }
 
     fun getColorFromAttr(

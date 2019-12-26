@@ -3,6 +3,7 @@ package kushal.application.gym.Activities
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -31,10 +32,17 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     lateinit var scannerView: ZXingScannerView
     private val CHECKING_NAME = "Kushal"
+    private val sharedPreferences by lazy {
+        getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.getBoolean(IS_THEME_DARK, true))
+            setTheme(R.style.MyDarkTheme)
+        else
+            setTheme(R.style.AppTheme)
         scannerView = ZXingScannerView(this)
         setContentView(scannerView)
         window.setFlags(

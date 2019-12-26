@@ -71,7 +71,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_white"
+            android:background="@drawable/bg_white2"
             android:orientation="horizontal">
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_weight="8"
-                android:background="@drawable/bg_white"
+                android:background="@drawable/bg_white2"
                 android:gravity="center"
                 android:textColor="@color/backgroundDark"
                 android:textSize="24sp"
@@ -95,7 +95,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_white"
+                android:background="@drawable/bg_white2"
                 android:gravity="center"
                 android:textColor="@color/backgroundDark"
                 android:textSize="20sp"
