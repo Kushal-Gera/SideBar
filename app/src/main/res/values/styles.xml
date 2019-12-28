@@ -19,7 +19,7 @@
         <item name="colorControlNormal">#CDCDCD</item>
         <item name="colorControlActivated">#2999f2</item>
 
-        <item name="android:statusBarColor">#F5F5F5</item>
+        <item name="android:statusBarColor">#01579B</item>
         <item name="dialogBG">#01579B</item>
         <item name="accentDialog">@color/yellow_pastel</item>
         <item name="accentDialogGreen">@color/yellow_pastel</item>

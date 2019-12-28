@@ -4,8 +4,10 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,10 +20,18 @@ class DetailsAct : AppCompatActivity() {
 
     val auth = FirebaseAuth.getInstance().currentUser
 
+    val sharedPreferences by lazy {
+        getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.getBoolean(IS_THEME_DARK, true))
+            setTheme(R.style.MyDarkTheme)
+        else
+            setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_details)
-        window.statusBarColor = resources.getColor(R.color.backgroundDark)
+        window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
 
 
         save.setOnClickListener(View.OnClickListener {
@@ -48,18 +58,18 @@ class DetailsAct : AppCompatActivity() {
             finish()
         })
         female.setOnClickListener {
-            female.background = resources.getDrawable(R.drawable.save_now_bg)
-            male?.background = resources.getDrawable(R.drawable.save_now_bg_2)
+            female.setBackgroundResource(R.drawable.save_now_bg)
+            male.setBackgroundResource(R.drawable.save_now_bg_2)
             IS_MALE = false
             female.setTextColor(Color.WHITE)
-            male?.setTextColor(Color.LTGRAY)
+            male?.setTextColor(getColorFromAttr(R.attr.hintColor))
         }
         male.setOnClickListener {
-            male?.background = resources.getDrawable(R.drawable.save_now_bg)
-            female.background = resources.getDrawable(R.drawable.save_now_bg_2)
+            male.setBackgroundResource(R.drawable.save_now_bg)
+            female.setBackgroundResource(R.drawable.save_now_bg_2)
             IS_MALE = true
             male?.setTextColor(Color.WHITE)
-            female.setTextColor(Color.LTGRAY)
+            female.setTextColor(getColorFromAttr(R.attr.hintColor))
         }
 
     }
@@ -103,6 +113,15 @@ class DetailsAct : AppCompatActivity() {
     override fun onBackPressed() {
         if (intent.getBooleanExtra("allowed_back", false))
             super.onBackPressed()
+    }
+
+    fun getColorFromAttr(
+        @AttrRes attrColor: Int,
+        typedValue: TypedValue = TypedValue(),
+        resolveRefs: Boolean = true
+    ): Int {
+        theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+        return typedValue.data
     }
 
 

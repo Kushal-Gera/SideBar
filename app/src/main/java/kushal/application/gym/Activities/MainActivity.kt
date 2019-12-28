@@ -102,7 +102,6 @@ class MainActivity : AppCompatActivity() {
                 .scaleY(0.6f)
                 .duration = 1000
 
-            window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
             container.setBackgroundColor(getColorFromAttr(R.attr.backgroundColorDark))
 
             drawer.visibility = View.INVISIBLE
@@ -296,7 +295,7 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed({
                 drawer.visibility = View.VISIBLE
                 menu.visibility = View.INVISIBLE
-                window.statusBarColor = getColorFromAttr(R.attr.backgroundColor)
+                window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
                 container.setBackgroundColor(getColorFromAttr(R.attr.backgroundColor))
             }, 600)
 
@@ -328,6 +327,7 @@ class MainActivity : AppCompatActivity() {
         theme.resolveAttribute(attrColor, typedValue, resolveRefs)
         return typedValue.data
     }
+
 
     private fun deleteSQL() {
 

@@ -159,7 +159,8 @@ class Scanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.isNotEmpty()) {
