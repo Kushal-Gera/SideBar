@@ -11,6 +11,9 @@
         <attr name="backgroundColorDark" format="color"/>
         <attr name="toolbarColor" format="color"/>
 
+        <attr name="statusBarColorL" format="color"/>
+        <attr name="statusBarColorD" format="color"/>
+
         <attr name="textPrimary" format="color"/>
         <attr name="textSecondary" format="color"/>
 

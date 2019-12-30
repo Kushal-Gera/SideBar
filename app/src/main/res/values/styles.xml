@@ -19,6 +19,9 @@
         <item name="colorControlNormal">#CDCDCD</item>
         <item name="colorControlActivated">#2999f2</item>
 
+        <item name="statusBarColorD">#01579B</item>
+        <item name="statusBarColorL">#01579B</item>
+
         <item name="android:statusBarColor">#01579B</item>
         <item name="dialogBG">#01579B</item>
         <item name="accentDialog">@color/yellow_pastel</item>
@@ -46,6 +49,9 @@
 
         <item name="colorControlNormal">#CDCDCD</item>
         <item name="colorControlActivated">@color/colorAccent</item>
+
+        <item name="statusBarColorD">@color/backgroundDark</item>
+        <item name="statusBarColorL">@color/background</item>
 
         <item name="android:statusBarColor">@color/background</item>
         <item name="dialogBG">@color/toolbar_color</item>

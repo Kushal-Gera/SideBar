@@ -31,7 +31,8 @@ class DetailsAct : AppCompatActivity() {
         else
             setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_details)
-        window.statusBarColor = getColorFromAttr(R.attr.backgroundColorDark)
+        window.statusBarColor = getColorFromAttr(R.attr.statusBarColorL)
+
 
 
         save.setOnClickListener(View.OnClickListener {
