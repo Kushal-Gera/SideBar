@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit
 val SHARED_PREF = "shared_pref"
 val USER_NAME = "name"
 val USER_AGE = "age"
+val PAID = "paid"
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {

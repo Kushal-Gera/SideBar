@@ -73,7 +73,6 @@ class Settings : AppCompatActivity() {
         }
         setting_dev.setOnClickListener {
             CustomBar(it, "Developed by Kushal Gera :", CustomBar.LENGTH_LONG).run {
-
                 setTextSize(16f)
 
                 actionTextColor(R.color.yellow_pastel2)
@@ -88,8 +87,11 @@ class Settings : AppCompatActivity() {
                 setMargins(15, 0, 15, 30)
 
                 show()
-
             }
+
+            val b = sharedPreferences.getBoolean(PAID, false)
+            sharedPreferences.edit().putBoolean(PAID, !b).apply()
+
         }
         setting_share.setOnClickListener { shareIT() }
         setting_rate.setOnClickListener { rateUs() }
