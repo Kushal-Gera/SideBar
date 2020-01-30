@@ -34,19 +34,54 @@
                 android:paddingStart="5dp"
                 android:paddingEnd="12dp" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/description"
-                android:src="@drawable/bg_white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/my_details"
+                android:textColor="?attr/textPrimary"
+                android:textSize="18sp" />
 
-            <ImageView
+            <View
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/yellow_pastel" />
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/description"
-                android:src="@drawable/bg_white" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Exercise Routine :       Weight Loss"
+                android:textColor="?attr/textPrimary"
+                android:textSize="19sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Diet Routine :               Weight Loss"
+                android:textColor="?attr/textPrimary"
+                android:textSize="19sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableEnd="@drawable/ic_add_circle_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Water Intake :              2400 mL"
+                android:textColor="?attr/textPrimary"
+                android:textSize="19sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/drop_down"
@@ -169,12 +204,30 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Our Sponsors"
+                android:textColor="?attr/textPrimary"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/yellow_pastel" />
+
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:contentDescription="@string/description"
-                android:src="@drawable/bg_toolbar" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/illustrations" />
 
         </LinearLayout>
 

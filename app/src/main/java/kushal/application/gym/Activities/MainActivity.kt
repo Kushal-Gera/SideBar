@@ -20,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import androidx.work.*
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kushal.application.gym.DateDatabase.DateDatabase
@@ -52,8 +51,6 @@ class MainActivity : AppCompatActivity() {
             diet_tv, gallery_tv
         )
     }
-
-    val auth = FirebaseAuth.getInstance()
 
     private val sharedPreferences: SharedPreferences by lazy {
         getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
@@ -107,7 +104,6 @@ class MainActivity : AppCompatActivity() {
 
             drawer.visibility = View.INVISIBLE
             IS_SHORT = true
-
 
             val dp = sharedPreferences.getString("dp", "none")
             if (!dp.equals("none"))

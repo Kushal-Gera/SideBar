@@ -36,7 +36,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/person"
-                app:civ_border_color="?attr/toolbarColor"
+                app:civ_border_color="@color/yellow_pastel"
                 app:civ_border_width="2dp" />
 
             <TextView

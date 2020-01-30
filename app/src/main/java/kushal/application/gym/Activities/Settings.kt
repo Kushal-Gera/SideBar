@@ -29,7 +29,6 @@ val CLEAR_ALLOWED = "clear"
 @Suppress("DEPRECATION")
 class Settings : AppCompatActivity() {
 
-
     val WEB_APP_LINK = "http://play.google.com/store/apps/details?id=" + "kushal.application.gym"
     val GMAIL_LINK = "kushalgera1212@gmail.com"
 
@@ -82,7 +81,7 @@ class Settings : AppCompatActivity() {
                     startActivity(
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kushal-Gera"))
                     )
-                }, false,16f)
+                }, false, 16f)
 
                 setBackground(R.drawable.bg_toolbar)
 

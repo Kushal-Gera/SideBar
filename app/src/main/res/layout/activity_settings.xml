@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColorDark"
+    android:background="?attr/backgroundColor"
     android:orientation="vertical"
     android:overScrollMode="never"
     tools:context=".Activities.Settings">
@@ -78,8 +78,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"
                     android:padding="5dp"
-                    android:src="@drawable/person"
-                    app:civ_border_color="?attr/toolbarColor"
+                    android:src="@drawable/person2"
+                    app:civ_border_color="@color/yellow_pastel"
                     app:civ_border_width="2dp" />
 
                 <ImageView
@@ -100,7 +100,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Users"
-                android:textColor="@color/white"
+                android:textColor="?attr/textPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="?attr/textPrimary"
                 android:textSize="24sp"
                 tools:text="28 yrs" />
 
@@ -125,7 +125,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="15dp"
             android:text="@string/edit_details"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp" />
 
         <View
@@ -148,7 +148,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
             android:text="@string/launch_camera_on_start"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp"
             android:thumb="@drawable/circle"
             android:track="@drawable/track_selector" />
@@ -173,7 +173,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
             android:text="@string/clear_data_on_logout"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp"
             android:thumb="@drawable/circle"
             android:track="@drawable/track_selector" />
@@ -198,7 +198,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
             android:text="@string/dark_mode_enabled"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp"
             android:thumb="@drawable/circle"
             android:track="@drawable/track_selector" />
@@ -223,7 +223,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="1dp"
             android:text="@string/receive_notifications"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp"
             android:thumb="@drawable/circle"
             android:track="@drawable/track_selector" />
@@ -241,12 +241,12 @@
             android:id="@+id/setting_dev"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/person"
+            android:drawableEnd="@drawable/person2"
             android:paddingStart="15dp"
             android:paddingTop="25dp"
             android:paddingEnd="15dp"
             android:text="@string/developers"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp" />
 
         <View
@@ -267,7 +267,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="15dp"
             android:text="@string/share_app"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp" />
 
         <View
@@ -288,7 +288,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="15dp"
             android:text="@string/rate_us"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp" />
 
         <View
@@ -309,7 +309,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="15dp"
             android:text="@string/suggestions"
-            android:textColor="@color/white"
+            android:textColor="?attr/textPrimary"
             android:textSize="20sp" />
 
         <View
