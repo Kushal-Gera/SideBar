@@ -67,12 +67,6 @@ class HomeFrag : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         }
-        ref.child("2.jpg").downloadUrl.addOnCompleteListener {
-            it.addOnSuccessListener {
-                list.add(it.toString())
-                adapter.notifyDataSetChanged()
-            }
-        }
         ref.child("3.jpg").downloadUrl.addOnCompleteListener {
             it.addOnSuccessListener {
                 list.add(it.toString())
