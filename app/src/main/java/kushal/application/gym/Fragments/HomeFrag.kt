@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kushal.application.gym.Activities.PAID
 import kushal.application.gym.Activities.SHARED_PREF
@@ -55,18 +56,42 @@ class HomeFrag : Fragment() {
         }
 
 
-        val list = arrayOf(
-            R.drawable.bg_blue,
-            R.drawable.bg_green,
-            R.drawable.bg_yellow,
-            R.drawable.bg_blue,
-            R.drawable.bg_green
-        )
+        val list =
+            arrayListOf("https://firebasestorage.googleapis.com/v0/b/gymapp-b70b9.appspot.com/o/2.jpg?alt=media&token=333a646e-2ee7-40bd-b63c-20e146549c13")
+        val adapter = Home_adapter(list, context!!)
+        val ref = FirebaseStorage.getInstance().reference
 
-        view.home_recView.adapter = Home_adapter(list)
-        val llm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        view.home_recView.layoutManager = llm
+        ref.child("4.jpg").downloadUrl.addOnCompleteListener {
+            it.addOnSuccessListener {
+                list.add(it.toString())
+                adapter.notifyDataSetChanged()
+            }
+        }
+        ref.child("3.jpg").downloadUrl.addOnCompleteListener {
+            it.addOnSuccessListener {
+                list.add(it.toString())
+                adapter.notifyDataSetChanged()
+            }
+        }
+        ref.child("5.jpg").downloadUrl.addOnCompleteListener {
+            it.addOnSuccessListener {
+                list.add(it.toString())
+                adapter.notifyDataSetChanged()
+            }
+        }
+        ref.child("1.jpeg").downloadUrl.addOnCompleteListener {
+            it.addOnSuccessListener {
+                list.add(it.toString())
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+
+        view.home_recView.adapter = adapter
+        view.home_recView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         view.home_recView.addItemDecoration(CirclePagerIndicatorDecoration())
+
 
         if (sharedPreferences.getBoolean(PAID, false)) {
             view.paid.visibility = View.VISIBLE
